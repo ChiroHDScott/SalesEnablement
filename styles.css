@@ -1,0 +1,340 @@
+:root {
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --bg-header: #0f172a;
+    --color-entry: #ffffff;
+    --color-scale: #38bdf8;
+    /* Light Blue */
+    --color-perf: #f472b6;
+    /* Pink */
+    --color-auto: #fbbf24;
+    /* Amber/Gold */
+    --check-green: #22c55e;
+    --border-color: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #f8fafc;
+    color: var(--text-primary);
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Logos */
+header.logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 40px;
+}
+
+.logo {
+    width: auto;
+    object-fit: contain;
+}
+
+/* Individual tuning */
+.chirohd {
+    height: 50px;
+}
+
+.sked {
+    height: 42px;
+    /* Increased to balance with ChiroHD */
+}
+
+.spark {
+    height: 46px;
+    /* Increased slightly */
+}
+
+/* Toggle */
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
+}
+
+.toggle-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.toggle-switch {
+    width: 60px;
+    height: 32px;
+    background-color: #0f172a;
+    border-radius: 9999px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.toggle-circle {
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.2s;
+}
+
+.toggle-switch.active .toggle-circle {
+    transform: translateX(28px);
+}
+
+.badge {
+    background-color: #10b981;
+    color: white;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 6px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+/* Table */
+.pricing-table {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--border-color);
+    align-items: center;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+/* Header Row */
+.header-row {
+    background-color: var(--bg-header);
+    color: white;
+    padding: 20px 0;
+}
+
+.col {
+    padding: 16px 20px;
+    text-align: center;
+}
+
+.feature-col {
+    text-align: left;
+    padding-left: 30px;
+}
+
+.small-title {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+.header-row h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.plan-name {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: #e2e8f0;
+}
+
+.plan-name.highlight {
+    color: var(--color-perf);
+}
+
+.plan-name.highlight-gold {
+    color: var(--color-auto);
+}
+
+.price-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    font-family: 'Playfair Display', serif;
+}
+
+.currency {
+    font-size: 18px;
+    vertical-align: top;
+    line-height: 1;
+}
+
+.price {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.period {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-left: 2px;
+}
+
+/* Body Rows */
+.row:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.row:nth-child(odd):not(.header-row) {
+    background-color: #ffffff;
+}
+
+/* Wait, screenshot shows all rows white with faint borders? 
+   Actually, it looks like alternating faintly or just lines. 
+   I'll stick to white with borders for now, maybe hover effect. */
+
+.row:hover:not(.header-row):not(.footer-row) {
+    background-color: #f8fafc;
+}
+
+.feature-col h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.feature-col p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-family: 'Inter', sans-serif;
+}
+
+.check-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.check {
+    width: 24px;
+    height: 24px;
+    background-color: var(--check-green);
+    border-radius: 4px;
+    position: relative;
+}
+
+.check::after {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.dash {
+    color: #cbd5e1;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+/* Footer Row */
+.footer-row {
+    background-color: #f1f5f9;
+    /* Slight blue/gray tint */
+    border-top: 2px solid var(--bg-header);
+    /* Optional accent */
+}
+
+.suited-text {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.4;
+    display: block;
+    color: var(--text-primary);
+}
+
+.suited-text.blue {
+    color: #0284c7;
+}
+
+.suited-text.pink {
+    color: #db2777;
+}
+
+.suited-text.orange {
+    color: #d97706;
+}
+
+/* Footnotes */
+.footnotes {
+    margin-top: 30px;
+}
+
+.footnotes p {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+    .header-row {
+        display: none;
+    }
+
+    /* Hide heavy header on mobile, maybe stacked view */
+    /* This is a simple mobile fix, ideally we'd transform the table */
+}

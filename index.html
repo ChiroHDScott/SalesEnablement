@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="logos">
+            <!-- Logos will be injected via CSS/Images, placeholders for now -->
+            <img src="assets/chirohd.png" alt="ChiroHD" class="logo chirohd">
+            <img src="assets/sked.png" alt="SKED" class="logo sked">
+            <img src="assets/spark.png" alt="Spark" class="logo spark">
+        </header>
+
+        <div class="toggle-container">
+            <span class="toggle-label" id="monthly-label">Monthly</span>
+            <div class="toggle-switch active" id="billing-toggle">
+                <div class="toggle-circle"></div>
+            </div>
+            <span class="toggle-label active" id="annual-label">Annual</span>
+        </div>
+
+        <div class="pricing-table">
+            <!-- Header Row -->
+            <div class="row header-row">
+                <div class="col feature-col">
+                    <span class="small-title">COMPARISON</span>
+                    <h2>Key Features</h2>
+                </div>
+                <div class="col plan-col">
+                    <span class="plan-name">ENTRY</span>
+                    <div class="price-container">
+                        <span class="currency">$</span><span class="price" data-monthly="314"
+                            data-annual="299">299</span><span class="period">/mo*</span>
+                    </div>
+                </div>
+                <div class="col plan-col">
+                    <span class="plan-name">SCALE</span>
+                    <div class="price-container">
+                        <span class="currency">$</span><span class="price" data-monthly="498"
+                            data-annual="468">468</span><span class="period">/mo</span>
+                    </div>
+                </div>
+                <div class="col plan-col">
+                    <span class="plan-name highlight">PERFORMANCE</span>
+                    <div class="price-container">
+                        <span class="currency">$</span><span class="price" data-monthly="598"
+                            data-annual="558">558</span><span class="period">/mo</span>
+                    </div>
+                </div>
+                <div class="col plan-col">
+                    <span class="plan-name highlight-gold">AUTOMATION</span>
+                    <div class="price-container">
+                        <span class="currency">$</span><span class="price" data-monthly="798"
+                            data-annual="738">738</span><span class="period">/mo**</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Texting Credits Row -->
+            <div class="row">
+                <div class="col feature-col">
+                    <h3>Texting Credits (monthly)</h3>
+                </div>
+                <div class="col check-col">
+                    <span class="text-xs font-bold">$0.03 per text</span>
+                </div>
+                <div class="col check-col">
+                    <span class="text-xs font-bold">8,500 included</span>
+                </div>
+                <div class="col check-col">
+                    <span class="text-xs font-bold">12,500 included</span>
+                </div>
+                <div class="col check-col">
+                    <span class="text-xs font-bold">15,000 included</span>
+                </div>
+            </div>
+
+            <!-- Feature Rows -->
+            <div class="row">
+                <div class="col feature-col">
+                    <h3>Full ChiroHD EHR Platform</h3>
+                    <p>(Scheduling, Billing, Records, Care Plans)</p>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col feature-col">
+                    <h3>Basic Text Infrastructure (No Automation)</h3>
+                    <p>(Sends via office number/ChiroHD interface)</p>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col feature-col">
+                    <h3>SKED Patient Mobile App & Portal</h3>
+                </div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col feature-col">
+                    <h3>Automated Reminders & Family Scheduling</h3>
+                </div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col feature-col">
+                    <h3>Automated Google Reviews Booster</h3>
+                </div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col feature-col">
+                    <h3>Smart Reactivation & Drip Campaigns</h3>
+                </div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col feature-col">
+                    <h3>Premium Integrations</h3>
+                    <p>(CLA Synapse, GHL)</p>
+                </div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col feature-col">
+                    <h3>New + Existing Patient Portals</h3>
+                    <p>(CLA Synapse, GHL)</p>
+                </div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col feature-col">
+                    <h3>SPARK AI Chatbot & Lead Conversion Engine</h3>
+                </div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col feature-col">
+                    <h3>VIP Concierge Support</h3>
+                </div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col"><span class="dash">&mdash;</span></div>
+                <div class="col check-col">
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <div class="row footer-row">
+                <div class="col feature-col">
+                    <h3>Best Suited For:</h3>
+                </div>
+                <div class="col check-col">
+                    <span class="suited-text">Budget<br>Foundation</span>
+                </div>
+                <div class="col check-col">
+                    <span class="suited-text blue">Smart<br>Efficiency</span>
+                </div>
+                <div class="col check-col">
+                    <span class="suited-text pink">High-Volume<br>Retention</span>
+                </div>
+                <div class="col check-col">
+                    <span class="suited-text orange">Complex<br>Scaling</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footnotes">
+            <p>* ENTRY plan incurs an additional $0.03 per text message usage fee</p>
+            <p>** AUTOMATION package incurs additional performance-based fees based on results</p>
+            <p>ChiroHD Onboarding $799</p>
+            <p>ChiroHD Data Migration: $499</p>
+            <p>ChiroHD Digitized paperwork limited to 3 forms, 10 pages</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
