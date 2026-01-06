@@ -95,7 +95,7 @@ export default function Home() {
     ];
 
     return (
-        <main className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 font-inter text-gray-900">
+        <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-blue-50 py-16 px-4 sm:px-6 lg:px-8 font-inter text-gray-900">
             <div className="max-w-7xl mx-auto">
                 {/* Header / Logos */}
                 <header className="flex justify-center items-center gap-12 mb-12 flex-wrap">
@@ -140,9 +140,9 @@ export default function Home() {
                 </div>
 
                 {/* Pricing Table */}
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+                <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
                     {/* Table Header */}
-                    <div className="grid grid-cols-5 bg-gray-50 border-b border-gray-200 divide-x divide-gray-200">
+                    <div className="grid grid-cols-5 bg-gray-50/50 border-b border-gray-200 divide-x divide-gray-200">
                         <div className="p-6 flex flex-col justify-end">
                             <span className="text-xs font-bold text-gray-400 tracking-wider mb-2">COMPARISON</span>
                             <h2 className="text-2xl font-bold text-gray-900 font-playfair">Key Features</h2>
@@ -170,9 +170,9 @@ export default function Home() {
                     {/* Feature Rows */}
                     <div className="divide-y divide-gray-200">
                         {features.map((feature: any, idx) => (
-                            <div key={idx} className="grid grid-cols-5 divide-x divide-gray-200 hover:bg-gray-50 transition-colors">
+                            <div key={idx} className="grid grid-cols-5 divide-x divide-gray-200 hover:bg-gray-50 transition-colors group">
                                 <div className="p-4 px-6 flex flex-col justify-center">
-                                    <h3 className="font-semibold text-gray-900">{feature.title}</h3>
+                                    <h3 className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">{feature.title}</h3>
                                     {feature.subtitle && <p className="text-sm text-gray-500 mt-1">{feature.subtitle}</p>}
                                 </div>
                                 {(feature.values || feature.checks).map((item: any, i: number) => (
@@ -182,7 +182,7 @@ export default function Home() {
                                         {typeof item === 'string' ? (
                                             <span className="text-xs font-bold text-center">{item}</span>
                                         ) : item === true ? (
-                                            <div className="bg-blue-600 rounded-full p-1">
+                                            <div className="bg-blue-600 rounded-full p-1 shadow-sm">
                                                 <Check className="w-4 h-4 text-white" strokeWidth={3} />
                                             </div>
                                         ) : (
@@ -194,10 +194,27 @@ export default function Home() {
                         ))}
                     </div>
 
+                    {/* CTA Row */}
+                    <div className="grid grid-cols-5 divide-x divide-gray-200 border-t border-gray-200">
+                        <div className="p-6"></div> {/* Empty label col */}
+                        {plans.map((plan, idx) => (
+                            <div key={idx} className={`p-6 flex justify-center items-center ${plan.highlight === 'blue' ? 'bg-blue-50/30' :
+                                plan.highlight === 'gold' ? 'bg-orange-50/30' : ''
+                                }`}>
+                                <button className={`w-full py-3 px-4 rounded-xl font-bold transition-all shadow-sm hover:shadow-lg transform hover:-translate-y-0.5 ${plan.highlight === 'blue' ? 'bg-blue-600 text-white hover:bg-blue-700' :
+                                    plan.highlight === 'gold' ? 'bg-orange-500 text-white hover:bg-orange-600' :
+                                        'bg-white text-gray-700 border-2 border-gray-200 hover:border-blue-600 hover:text-blue-600'
+                                    }`}>
+                                    Book Demo
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+
                     {/* Footer Row / Best Suited */}
-                    <div className="grid grid-cols-5 border-t border-gray-200 divide-x divide-gray-200 bg-gray-50">
+                    <div className="grid grid-cols-5 border-t border-gray-200 divide-x divide-gray-200 bg-gray-50/50">
                         <div className="p-6 flex items-center">
-                            <h3 className="font-bold text-gray-700">Best Suited For:</h3>
+                            <h3 className="font-bold text-gray-700 uppercase tracking-wider text-xs">Best Suited For</h3>
                         </div>
                         {bestSuited.map((item, idx) => (
                             <div key={idx} className={`p-6 flex items-center justify-center text-center font-bold text-sm leading-relaxed ${item.color}`}>
@@ -208,12 +225,22 @@ export default function Home() {
                 </div>
 
                 {/* Footnotes */}
-                <div className="mt-8 text-sm text-gray-500 space-y-1">
-                    <p>* ENTRY plan incurs an additional $0.03 per text message usage fee</p>
-                    <p>** AUTOMATION package incurs additional performance-based fees based on results</p>
-                    <p>ChiroHD Onboarding $799</p>
-                    <p>ChiroHD Data Migration: $499</p>
-                    <p>ChiroHD Digitized paperwork limited to 3 forms, 10 pages</p>
+                <div className="mt-16 border-t border-gray-200 pt-10 pb-12">
+                    <h4 className="text-center text-sm font-bold text-gray-400 uppercase tracking-widest mb-8">Additional Details</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
+                        <div className="bg-white/60 p-5 rounded-2xl border border-white shadow-sm backdrop-blur-sm">
+                            <p className="text-sm text-gray-600 leading-relaxed"><span className="font-bold text-blue-900 block mb-1">* ENTRY Plan</span>Incurs an additional $0.03 per text message usage fee.</p>
+                        </div>
+                        <div className="bg-white/60 p-5 rounded-2xl border border-white shadow-sm backdrop-blur-sm">
+                            <p className="text-sm text-gray-600 leading-relaxed"><span className="font-bold text-blue-900 block mb-1">** AUTOMATION Package</span>Incurs additional performance-based fees based on results.</p>
+                        </div>
+                        <div className="bg-white/60 p-5 rounded-2xl border border-white shadow-sm backdrop-blur-sm">
+                            <p className="text-sm text-gray-600 leading-relaxed"><span className="font-bold text-blue-900 block mb-1">Onboarding</span>ChiroHD Onboarding: $799<br />ChiroHD Data Migration: $499</p>
+                        </div>
+                        <div className="bg-white/60 p-5 rounded-2xl border border-white shadow-sm backdrop-blur-sm md:col-span-2 lg:col-span-3 text-center">
+                            <p className="text-sm text-gray-600 leading-relaxed"><span className="font-bold text-gray-900">Note:</span> ChiroHD Digitized paperwork limited to 3 forms, 10 pages</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
