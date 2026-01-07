@@ -51,17 +51,17 @@ header.logos {
 
 /* Individual tuning */
 .chirohd {
-    height: 50px;
+    height: 40px;
 }
 
 .sked {
-    height: 42px;
-    /* Increased to balance with ChiroHD */
+    height: 40px;
 }
 
 .spark {
-    height: 46px;
-    /* Increased slightly */
+    height: 56px;
+    /* Optically adjusted to match others */
+    transform: translateY(6px);
 }
 
 /* Toggle */
@@ -121,6 +121,7 @@ header.logos {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border-color);
+    font-family: 'Inter', sans-serif;
 }
 
 .row {
@@ -191,7 +192,7 @@ header.logos {
     display: flex;
     justify-content: center;
     align-items: baseline;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .currency {
@@ -231,7 +232,7 @@ header.logos {
 
 .feature-col h3 {
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 4px;
 }
@@ -305,15 +306,50 @@ header.logos {
 
 /* Footnotes */
 .footnotes {
-    margin-top: 30px;
+    margin-top: 40px;
+    background-color: var(--bg-header);
+    padding: 30px;
+    border-radius: 8px;
+    color: #cbd5e1;
+    font-family: 'Inter', sans-serif;
 }
 
-.footnotes p {
-    font-family: 'Playfair Display', serif;
-    font-size: 13px;
-    color: var(--text-primary);
-    margin-bottom: 8px;
+.footnote-fees {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 24px;
+}
+
+.footnote-fees p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+}
+
+.footnote-fees p::before {
+    content: '•';
+    color: var(--color-scale);
+    margin-right: 10px;
+    font-size: 18px;
+    line-height: 0;
+}
+
+.footnote-disclaimer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footnote-disclaimer p {
+    font-size: 12px;
+    color: #94a3b8;
     line-height: 1.5;
+    font-style: italic;
 }
 
 /* Responsive */
