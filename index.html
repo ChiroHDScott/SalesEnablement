@@ -10,7 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1.1">
 </head>
 
 <body>
@@ -20,6 +20,16 @@
             <img src="assets/chirohd.png" alt="ChiroHD" class="logo chirohd">
             <img src="assets/sked.png" alt="SKED" class="logo sked">
             <img src="assets/spark.png" alt="Spark" class="logo spark">
+            <script>
+                // This is to avoid a 404 error we saw in the subagent logs for the favicon
+                let link = document.querySelector("link[rel~='icon']");
+                if (!link) {
+                    link = document.createElement('link');
+                    link.rel = 'icon';
+                    document.head.appendChild(link);
+                }
+                link.href = 'data:image/x-icon;,';
+            </script>
         </header>
 
         <div class="toggle-container">
@@ -143,7 +153,7 @@
 
             <div class="row">
                 <div class="col feature-col">
-                    <h3>Family Scheduling</h3>
+                    <h3>Automated Reminders</h3>
                 </div>
                 <div class="col check-col"><span class="dash">&mdash;</span></div>
                 <div class="col check-col">
@@ -175,7 +185,7 @@
 
             <div class="row">
                 <div class="col feature-col">
-                    <h3>Smart Reactivation & Drip Campaigns</h3>
+                    <h3>Smart Reply & Smart Reactivation</h3>
                 </div>
                 <div class="col check-col"><span class="dash">&mdash;</span></div>
                 <div class="col check-col"><span class="dash">&mdash;</span></div>
@@ -219,7 +229,7 @@
 
             <div class="row">
                 <div class="col feature-col">
-                    <h3>Online Scheduling and Family Management</h3>
+                    <h3>Online Scheduling for New and Existing Patients</h3>
                 </div>
                 <div class="col check-col"><span class="dash">&mdash;</span></div>
                 <div class="col check-col"><span class="dash">&mdash;</span></div>
@@ -233,7 +243,7 @@
 
             <div class="row">
                 <div class="col feature-col">
-                    <h3>SPARK AI Chatbot & Lead Conversion Engine</h3>
+                    <h3>SPARK AI Chatbot, Recall and Reactivation Engine</h3>
                     <p>(5 Reactivations per Month included)</p>
                 </div>
                 <div class="col check-col"><span class="dash">&mdash;</span></div>
@@ -313,7 +323,7 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=1.1"></script>
 </body>
 
 </html>
