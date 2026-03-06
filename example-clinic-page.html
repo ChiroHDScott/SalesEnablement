@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coastal Spine & Wellness — Practice Intelligence | ChiroHD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700;900&family=Oswald:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ─── RESET & BASE ──────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a2e;
+            background: #f8f9fc;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── VARIABLES ──────────────────────────────────────── */
+        :root {
+            --brand-primary: #0066FF;
+            --brand-dark: #0a0a23;
+            --brand-gradient: linear-gradient(135deg, #0066FF 0%, #00C2FF 100%);
+            --accent-green: #00C48C;
+            --accent-orange: #FF9F43;
+            --accent-red: #FF6B6B;
+            --accent-purple: #7C5CFC;
+            --surface: #ffffff;
+            --surface-alt: #f1f3f9;
+            --border: #e2e6ef;
+            --text-primary: #1a1a2e;
+            --text-secondary: #5a6077;
+            --text-muted: #8b90a0;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.10);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ─── NAVIGATION ─────────────────────────────────────── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo img {
+            height: 32px;
+        }
+
+        .nav-badge {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--brand-primary);
+            background: rgba(0, 102, 255, 0.08);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--brand-primary);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.875rem;
+            padding: 10px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: #0055dd;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ─── HERO ───────────────────────────────────────────── */
+        .hero {
+            background: var(--brand-dark);
+            color: #fff;
+            padding: 4rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 194, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #00C2FF;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-meta-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .hero-meta-value {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* ─── SECTION LAYOUTS ────────────────────────────────── */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3.5rem 2rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-eyebrow {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--brand-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            max-width: 640px;
+        }
+
+        .section-divider {
+            border: none;
+            height: 1px;
+            background: var(--border);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ─── MARKET SNAPSHOT GAUGES ─────────────────────────── */
+        .gauge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .gauge-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: all 0.25s;
+        }
+
+        .gauge-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .gauge-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 1rem;
+        }
+
+        .gauge-visual {
+            position: relative;
+            height: 10px;
+            background: var(--surface-alt);
+            border-radius: 10px;
+            margin-bottom: 1.25rem;
+            overflow: visible;
+        }
+
+        .gauge-fill {
+            height: 100%;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .gauge-fill.blue {
+            background: var(--brand-gradient);
+        }
+
+        .gauge-fill.green {
+            background: linear-gradient(135deg, #00C48C, #00E6A0);
+        }
+
+        .gauge-fill.purple {
+            background: linear-gradient(135deg, #7C5CFC, #A78BFA);
+        }
+
+        .gauge-fill.orange {
+            background: linear-gradient(135deg, #FF9F43, #FFBE76);
+        }
+
+        .gauge-marker {
+            position: absolute;
+            top: -6px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--brand-dark);
+            border: 3px solid #fff;
+            box-shadow: var(--shadow-md);
+            transform: translateX(-50%);
+        }
+
+        .gauge-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .gauge-stat-block {}
+
+        .gauge-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .gauge-stat-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.1;
+        }
+
+        .gauge-stat-value.highlight {
+            color: var(--brand-primary);
+        }
+
+        .gauge-delta {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            background: rgba(0, 196, 140, 0.08);
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        /* ─── OPPORTUNITY CARDS ──────────────────────────────── */
+        .opp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .opp-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.25s;
+        }
+
+        .opp-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .opp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .opp-card.revenue::before {
+            background: var(--brand-gradient);
+        }
+
+        .opp-card.retention::before {
+            background: linear-gradient(135deg, #00C48C, #00E6A0);
+        }
+
+        .opp-card.reactivation::before {
+            background: linear-gradient(135deg, #7C5CFC, #A78BFA);
+        }
+
+        .opp-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .opp-icon.blue {
+            background: rgba(0, 102, 255, 0.08);
+        }
+
+        .opp-icon.green {
+            background: rgba(0, 196, 140, 0.08);
+        }
+
+        .opp-icon.purple {
+            background: rgba(124, 92, 252, 0.08);
+        }
+
+        .opp-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .opp-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            line-height: 1.55;
+        }
+
+        .opp-big-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .opp-big-number.blue {
+            color: var(--brand-primary);
+        }
+
+        .opp-big-number.green {
+            color: var(--accent-green);
+        }
+
+        .opp-big-number.purple {
+            color: var(--accent-purple);
+        }
+
+        .opp-big-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .opp-detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-top: 1px solid var(--surface-alt);
+            font-size: 0.85rem;
+        }
+
+        .opp-detail-label {
+            color: var(--text-secondary);
+        }
+
+        .opp-detail-value {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* ─── PAIN SIGNALS ───────────────────────────────────── */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .pain-card {
+            background: var(--surface);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.2s;
+        }
+
+        .pain-card:hover {
+            box-shadow: var(--shadow-sm);
+            border-color: var(--brand-primary);
+        }
+
+        .pain-card.active {
+            border-color: var(--brand-primary);
+            background: rgba(0, 102, 255, 0.02);
+        }
+
+        .pain-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .pain-badge.scheduling {
+            background: rgba(255, 159, 67, 0.1);
+        }
+
+        .pain-badge.billing {
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .pain-badge.communication {
+            background: rgba(0, 102, 255, 0.08);
+        }
+
+        .pain-badge.staff {
+            background: rgba(124, 92, 252, 0.08);
+        }
+
+        .pain-content {}
+
+        .pain-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .pain-detail {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .pain-count {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            background: rgba(255, 159, 67, 0.08);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        .pain-count.high {
+            color: var(--accent-red);
+            background: rgba(255, 107, 107, 0.08);
+        }
+
+        .pain-count.medium {
+            color: var(--accent-orange);
+            background: rgba(255, 159, 67, 0.08);
+        }
+
+        .pain-count.low {
+            color: var(--brand-primary);
+            background: rgba(0, 102, 255, 0.06);
+        }
+
+        /* ─── CONTENT HUB ────────────────────────────────────── */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .content-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .content-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .content-card-banner {
+            height: 8px;
+        }
+
+        .content-card-banner.collections {
+            background: var(--brand-gradient);
+        }
+
+        .content-card-banner.retention {
+            background: linear-gradient(135deg, #00C48C, #00E6A0);
+        }
+
+        .content-card-banner.migration {
+            background: linear-gradient(135deg, #FF9F43, #FFBE76);
+        }
+
+        .content-card-body {
+            padding: 1.5rem;
+        }
+
+        .content-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .content-tag.blue {
+            color: var(--brand-primary);
+            background: rgba(0, 102, 255, 0.06);
+        }
+
+        .content-tag.green {
+            color: var(--accent-green);
+            background: rgba(0, 196, 140, 0.06);
+        }
+
+        .content-tag.orange {
+            color: var(--accent-orange);
+            background: rgba(255, 159, 67, 0.06);
+        }
+
+        .content-card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .content-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 1rem;
+        }
+
+        .content-card-link {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .content-card-link:hover {
+            gap: 10px;
+        }
+
+        /* ─── PRACTICE PROFILE ───────────────────────────────── */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .profile-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            border: 1px solid var(--border);
+        }
+
+        .profile-card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .profile-list {
+            list-style: none;
+        }
+
+        .profile-list li {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--brand-primary);
+            flex-shrink: 0;
+        }
+
+        .profile-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin: 3px 4px 3px 0;
+            background: var(--surface-alt);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        /* ─── CTA SECTION ────────────────────────────────────── */
+        .cta-section {
+            background: var(--brand-dark);
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.12) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+
+        .cta-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--brand-primary);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #0055dd;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateY(-2px);
+        }
+
+        /* ─── FOOTER ──────────────────────────────────────────── */
+        .footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--brand-primary);
+        }
+
+        /* ─── SOCIAL PROOF BAR ───────────────────────────────── */
+        .proof-bar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+        }
+
+        .proof-bar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .proof-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        .proof-value {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--brand-primary);
+        }
+
+        /* ─── COMPARISON TABLE ───────────────────────────────── */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .comparison-table th {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            background: var(--surface-alt);
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table th:last-child {
+            text-align: right;
+        }
+
+        .comparison-table td {
+            padding: 0.9rem 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--surface-alt);
+        }
+
+        .comparison-table td:last-child {
+            text-align: right;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table .metric-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .comparison-table .median-val {
+            color: var(--text-secondary);
+        }
+
+        .comparison-table .top-val {
+            font-weight: 700;
+            color: var(--brand-primary);
+        }
+
+        /* ─── INTERNAL BADGE ─────────────────────────────────── */
+        .internal-banner {
+            background: linear-gradient(135deg, #7C5CFC 0%, #A78BFA 100%);
+            color: #fff;
+            text-align: center;
+            padding: 10px 2rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        /* ─── RESPONSIVE ─────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2.5rem 1.25rem 2rem;
+            }
+
+            .section {
+                padding: 2.5rem 1.25rem;
+            }
+
+            .gauge-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .opp-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-meta {
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gauge-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ INTERNAL-ONLY BANNER ═══ -->
+    <div class="internal-banner">
+        &#128302; Internal Preview — This is an example Clinic Strategy Page. In production, each of the 82,000+ clinics
+        gets a unique page like this.
+    </div>
+
+    <!-- ═══ NAVIGATION ═══ -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div style="display:flex;align-items:center;gap:1rem;">
+                <a href="#" class="nav-logo">
+                    <img src="https://cdn.prod.website-files.com/640bef7e714c5a171f61c3b9/64d10d38c683344bf0e896d8_logo-for-light-backgrounds.svg"
+                        alt="ChiroHD">
+                </a>
+                <span class="nav-badge">Practice Intelligence</span>
+            </div>
+            <a href="#cta" class="nav-cta">Schedule a Demo &rarr;</a>
+        </div>
+    </nav>
+
+    <!-- ═══ HERO ═══ -->
+    <header class="hero">
+        <div class="hero-inner">
+            <div class="hero-eyebrow">Tampa-Orlando Metro &mdash; Practice Intelligence Report</div>
+            <h1 class="hero-title">Coastal Spine & Wellness</h1>
+            <p class="hero-subtitle">Here's how your market is performing — and where the biggest opportunities are for
+                your practice in St. Petersburg, FL.</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <div class="hero-meta-icon">&#11088;</div>
+                    <div><span class="hero-meta-value">4.8</span> rating</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="hero-meta-icon">&#128172;</div>
+                    <div><span class="hero-meta-value">247</span> reviews</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="hero-meta-icon">&#129657;</div>
+                    <div><span class="hero-meta-value">5</span> practitioners</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="hero-meta-icon">&#128197;</div>
+                    <div>Est. <span class="hero-meta-value">2016</span></div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="hero-meta-icon">&#127961;</div>
+                    <div><span class="hero-meta-value">2</span> locations</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══ SOCIAL PROOF BAR ═══ -->
+    <div class="proof-bar">
+        <div class="proof-bar-inner">
+            <div class="proof-item">
+                <span class="proof-value">62</span> ChiroHD practices in Tampa-Orlando
+            </div>
+            <div class="proof-item">
+                <span>&#8226;</span>
+            </div>
+            <div class="proof-item">
+                Data from <span class="proof-value">1,056+</span> active locations nationwide
+            </div>
+            <div class="proof-item">
+                <span>&#8226;</span>
+            </div>
+            <div class="proof-item">
+                Updated <span class="proof-value">Q1 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ MARKET SNAPSHOT ═══ -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-eyebrow">Market Snapshot</div>
+            <h2 class="section-title">How Tampa-Orlando Practices Compare</h2>
+            <p class="section-subtitle">Based on real performance data from 62 ChiroHD practices in your metro area.</p>
+        </div>
+
+        <div class="gauge-grid">
+            <!-- CVA Gauge -->
+            <div class="gauge-card">
+                <div class="gauge-label">Collections Per Visit</div>
+                <div class="gauge-visual">
+                    <div class="gauge-fill blue" style="width: 80%;"></div>
+                    <div class="gauge-marker" style="left: 61%;" title="Median: $80"></div>
+                </div>
+                <div class="gauge-stats">
+                    <div class="gauge-stat-block">
+                        <div class="gauge-stat-label">Median</div>
+                        <div class="gauge-stat-value">$80</div>
+                    </div>
+                    <div class="gauge-stat-block" style="text-align: right;">
+                        <div class="gauge-stat-label">Top 25%</div>
+                        <div class="gauge-stat-value highlight">$104</div>
+                    </div>
+                </div>
+                <div style="margin-top: 0.75rem; text-align: right;">
+                    <span class="gauge-delta">&#9650; +30% upside</span>
+                </div>
+            </div>
+
+            <!-- PVA Gauge -->
+            <div class="gauge-card">
+                <div class="gauge-label">Patient Visit Average</div>
+                <div class="gauge-visual">
+                    <div class="gauge-fill green" style="width: 76%;"></div>
+                    <div class="gauge-marker" style="left: 57%;" title="Median: 11.4"></div>
+                </div>
+                <div class="gauge-stats">
+                    <div class="gauge-stat-block">
+                        <div class="gauge-stat-label">Median</div>
+                        <div class="gauge-stat-value">11.4</div>
+                    </div>
+                    <div class="gauge-stat-block" style="text-align: right;">
+                        <div class="gauge-stat-label">Top 25%</div>
+                        <div class="gauge-stat-value highlight">15.2</div>
+                    </div>
+                </div>
+                <div style="margin-top: 0.75rem; text-align: right;">
+                    <span class="gauge-delta">&#9650; +3.8 visits/patient</span>
+                </div>
+            </div>
+
+            <!-- Volume Gauge -->
+            <div class="gauge-card">
+                <div class="gauge-label">Weekly Visit Volume</div>
+                <div class="gauge-visual">
+                    <div class="gauge-fill purple" style="width: 85%;"></div>
+                    <div class="gauge-marker" style="left: 56%;" title="Median: 135"></div>
+                </div>
+                <div class="gauge-stats">
+                    <div class="gauge-stat-block">
+                        <div class="gauge-stat-label">Median</div>
+                        <div class="gauge-stat-value">135</div>
+                    </div>
+                    <div class="gauge-stat-block" style="text-align: right;">
+                        <div class="gauge-stat-label">Top 25%</div>
+                        <div class="gauge-stat-value highlight">206</div>
+                    </div>
+                </div>
+                <div style="margin-top: 0.75rem; text-align: right;">
+                    <span class="gauge-delta">&#9650; +53% capacity</span>
+                </div>
+            </div>
+
+            <!-- New Patients Gauge -->
+            <div class="gauge-card">
+                <div class="gauge-label">New Patients / Month</div>
+                <div class="gauge-visual">
+                    <div class="gauge-fill orange" style="width: 82%;"></div>
+                    <div class="gauge-marker" style="left: 50%;" title="Median: 24"></div>
+                </div>
+                <div class="gauge-stats">
+                    <div class="gauge-stat-block">
+                        <div class="gauge-stat-label">Median</div>
+                        <div class="gauge-stat-value">24</div>
+                    </div>
+                    <div class="gauge-stat-block" style="text-align: right;">
+                        <div class="gauge-stat-label">Top 25%</div>
+                        <div class="gauge-stat-value highlight">39</div>
+                    </div>
+                </div>
+                <div style="margin-top: 0.75rem; text-align: right;">
+                    <span class="gauge-delta">&#9650; +63% growth</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══ OPPORTUNITY CARDS ═══ -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-eyebrow">Your Opportunity</div>
+            <h2 class="section-title">Three Ways Tampa Practices Leave Money on the Table</h2>
+        </div>
+
+        <div class="opp-grid">
+            <!-- Revenue Card -->
+            <div class="opp-card revenue">
+                <div class="opp-icon blue">&#128176;</div>
+                <div class="opp-title">The Collections Gap</div>
+                <p class="opp-description">The median Tampa practice collects $80 per visit. Top 25% collect $104. That
+                    $24 gap compounds with every patient interaction.</p>
+                <div class="opp-big-number blue">$62,400</div>
+                <div class="opp-big-label" style="margin-bottom: 1.25rem;">potential additional annual revenue</div>
+                <div class="opp-detail-row">
+                    <span class="opp-detail-label">Gap per visit</span>
+                    <span class="opp-detail-value">+$24</span>
+                </div>
+                <div class="opp-detail-row">
+                    <span class="opp-detail-label">At 50 weeks &times; 135 visits/week</span>
+                    <span class="opp-detail-value">= $162,000</span>
+                </div>
+                <div class="opp-detail-row">
+                    <span class="opp-detail-label">Even closing half the gap</span>
+                    <span class="opp-detail-value" style="color: var(--accent-green);">$62,400/yr</span>
+                </div>
+            </div>
+
+            <!-- Retention Card -->
+            <div class="opp-card retention">
+                <div class="opp-icon green">&#128257;</div>
+                <div class="opp-title">The Retention Gap</div>
+                <p class="opp-description">The median patient in Tampa completes 11.4 visits. Top practices retain
+                    patients for 15.2 visits. Each additional visit = $80 in revenue.</p>
+                <div class="opp-big-number green">$304</div>
+                <div class="opp-big-label" style="margin-bottom: 1.25rem;">unrealized revenue per patient</div>
+                <div class="opp-detail-row">
+                    <span class="opp-detail-label">Visit gap</span>
+                    <span class="opp-detail-value">+3.8 visits</span>
+                </div>
+                <div class="opp-detail-row">
+                    <span class="opp-detail-label">Value per extra visit</span>
+                    <span class="opp-detail-value">$80 (CVA)</span>
+                </div>
+                <div class="opp-detail-row">
+                    <span class="opp-detail-label">At 24 new patients/month</span>
+                    <span class="opp-detail-value" style="color: var(--accent-green);">$87,552/yr</span>
+                </div>
+            </div>
+
+            <!-- Reactivation Card -->
+            <div class="opp-card reactivation">
+                <div class="opp-icon purple">&#128161;</div>
+                <div class="opp-title">The Hidden Revenue</div>
+                <p class="opp-description">Patients who stop coming back aren't lost — they're waiting to be re-engaged.
+                    The top Tampa practices prove this every year.</p>
+                <div class="opp-big-number purple">$126,768</div>
+                <div class="opp-big-label" style="margin-bottom: 1.25rem;">recovered revenue potential per year</div>
+                <div class="opp-detail-row">
+                    <span class="opp-detail-label">Revenue per reactivated patient</span>
+                    <span class="opp-detail-value">$912</span>
+                </div>
+                <div class="opp-detail-row">
+                    <span class="opp-detail-label">Top 25% reactivate annually</span>
+                    <span class="opp-detail-value">139 patients</span>
+                </div>
+                <div class="opp-detail-row">
+                    <span class="opp-detail-label">Your median peers recover</span>
+                    <span class="opp-detail-value" style="color: var(--accent-green);">57 patients &times; $912</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══ FULL BENCHMARK TABLE ═══ -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-eyebrow">Detailed Benchmarks</div>
+            <h2 class="section-title">Tampa-Orlando Performance Data</h2>
+            <p class="section-subtitle">Median and top-quartile metrics from 62 ChiroHD practices in your metro.</p>
+        </div>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Tampa Median</th>
+                    <th>Tampa Top 25%</th>
+                    <th>Opportunity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="metric-name">Collections Per Visit (CVA)</td>
+                    <td class="median-val">$80</td>
+                    <td class="top-val">$104</td>
+                    <td>+30%</td>
+                </tr>
+                <tr>
+                    <td class="metric-name">Patient Visit Average (PVA)</td>
+                    <td class="median-val">11.4 visits</td>
+                    <td class="top-val">15.2 visits</td>
+                    <td>+33%</td>
+                </tr>
+                <tr>
+                    <td class="metric-name">Weekly Visit Volume</td>
+                    <td class="median-val">135 /week</td>
+                    <td class="top-val">206 /week</td>
+                    <td>+53%</td>
+                </tr>
+                <tr>
+                    <td class="metric-name">New Patients / Month</td>
+                    <td class="median-val">24 /month</td>
+                    <td class="top-val">39 /month</td>
+                    <td>+63%</td>
+                </tr>
+                <tr>
+                    <td class="metric-name">Reactivations / Year</td>
+                    <td class="median-val">57 patients</td>
+                    <td class="top-val">139 patients</td>
+                    <td>+144%</td>
+                </tr>
+                <tr>
+                    <td class="metric-name">Revenue Per Reactivation</td>
+                    <td class="median-val" colspan="2" style="text-align:center;">$912 per patient</td>
+                    <td>&mdash;</td>
+                </tr>
+                <tr>
+                    <td class="metric-name">No-Show Rate</td>
+                    <td class="median-val">5.6%</td>
+                    <td class="top-val">&lt; 3%</td>
+                    <td>-46%</td>
+                </tr>
+                <tr>
+                    <td class="metric-name">Cash Pay Percentage</td>
+                    <td class="median-val" colspan="2" style="text-align:center;">93.4%</td>
+                    <td>&mdash;</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══ PAIN SIGNALS ═══ -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-eyebrow">Patient Insights</div>
+            <h2 class="section-title">What Your Patients Are Telling You</h2>
+            <p class="section-subtitle">We analyzed 247 Google reviews and identified recurring themes that signal
+                operational opportunities.</p>
+        </div>
+
+        <div class="pain-grid">
+            <div class="pain-card active">
+                <div class="pain-badge scheduling">&#128197;</div>
+                <div class="pain-content">
+                    <div class="pain-title">Scheduling Friction</div>
+                    <div class="pain-detail">Multiple reviews mention difficulty booking appointments, long hold times,
+                        and lack of online scheduling options.</div>
+                    <span class="pain-count high">Found in 8 reviews</span>
+                </div>
+            </div>
+
+            <div class="pain-card">
+                <div class="pain-badge billing">&#128179;</div>
+                <div class="pain-content">
+                    <div class="pain-title">Billing Confusion</div>
+                    <div class="pain-detail">Patients report unexpected charges, unclear insurance coverage
+                        communication, and billing discrepancies.</div>
+                    <span class="pain-count high">Found in 6 reviews</span>
+                </div>
+            </div>
+
+            <div class="pain-card">
+                <div class="pain-badge communication">&#128172;</div>
+                <div class="pain-content">
+                    <div class="pain-title">Follow-Up Gaps</div>
+                    <div class="pain-detail">Patients wished for better appointment reminders, post-visit instructions,
+                        and proactive communication between visits.</div>
+                    <span class="pain-count medium">Found in 5 reviews</span>
+                </div>
+            </div>
+
+            <div class="pain-card">
+                <div class="pain-badge staff">&#128101;</div>
+                <div class="pain-content">
+                    <div class="pain-title">Front Desk Experience</div>
+                    <div class="pain-detail">Some reviews highlight inconsistency at the front desk — check-in delays,
+                        staff turnover, and communication gaps between staff and providers.</div>
+                    <span class="pain-count low">Found in 3 reviews</span>
+                </div>
+            </div>
+        </div>
+
+        <div
+            style="margin-top: 1.5rem; padding: 1.25rem 1.5rem; background: rgba(0,102,255,0.03); border-radius: var(--radius-sm); border: 1px solid rgba(0,102,255,0.1);">
+            <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+                <strong style="color: var(--brand-primary);">Recommended:</strong> Based on these signals, practices
+                like yours see the biggest impact from <strong>SKED</strong> (automated scheduling + patient
+                communication) and <strong>ChiroHD</strong> (streamlined billing + integrated workflows). The
+                combination addresses the top 3 patient-reported pain points.
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══ PRACTICE PROFILE ═══ -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-eyebrow">Practice Profile</div>
+            <h2 class="section-title">What We Know About Coastal Spine & Wellness</h2>
+            <p class="section-subtitle">Compiled from public records, your website, and industry databases.</p>
+        </div>
+
+        <div class="profile-grid">
+            <div class="profile-card">
+                <div class="profile-card-title">&#129657; Services Detected</div>
+                <div style="display:flex; flex-wrap:wrap; gap: 0;">
+                    <span class="profile-tag">Chiropractic Adjustments</span>
+                    <span class="profile-tag">Spinal Decompression</span>
+                    <span class="profile-tag">Sports Rehabilitation</span>
+                    <span class="profile-tag">Corrective Exercises</span>
+                    <span class="profile-tag">Nutrition Counseling</span>
+                    <span class="profile-tag">Prenatal Chiropractic</span>
+                    <span class="profile-tag">Pediatric Care</span>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-card-title">&#127919; Practice Characteristics</div>
+                <ul class="profile-list">
+                    <li>Multi-location practice (2 offices)</li>
+                    <li>5 licensed chiropractors on staff</li>
+                    <li>Established 2016 (10 years in practice)</li>
+                    <li>93%+ cash pay market (Tampa metro avg)</li>
+                    <li>Family and sports-focused brand positioning</li>
+                </ul>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-card-title">&#128187; Technology Signals</div>
+                <ul class="profile-list">
+                    <li>Online booking: <strong style="color: var(--accent-red);">Not detected</strong></li>
+                    <li>Patient portal: <strong style="color: var(--accent-red);">Not detected</strong></li>
+                    <li>Automated reminders: <strong style="color: var(--accent-orange);">Unknown</strong></li>
+                    <li>Website: Active, mobile-responsive</li>
+                    <li>Social media: Facebook, Instagram active</li>
+                </ul>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-card-title">&#128200; Competitive Context</div>
+                <ul class="profile-list">
+                    <li>12 chiropractic clinics within 3 miles</li>
+                    <li>Average competitor rating: 4.5 stars</li>
+                    <li>Your rating (4.8) is top 20% for your area</li>
+                    <li>3 nearby competitors offer online booking</li>
+                    <li>No franchise affiliation detected</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══ DYNAMIC CONTENT HUB ═══ -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-eyebrow">Resources For Your Practice</div>
+            <h2 class="section-title">Tailored to What Matters to You</h2>
+            <p class="section-subtitle">Based on your practice profile and market, we think these will be most relevant.
+            </p>
+        </div>
+
+        <div class="content-grid">
+            <div class="content-card">
+                <div class="content-card-banner collections"></div>
+                <div class="content-card-body">
+                    <span class="content-tag blue">Collections</span>
+                    <div class="content-card-title">How Tampa's Top Practices Increased CVA by 30% Without Raising Fees
+                    </div>
+                    <p class="content-card-desc">The gap between $80 and $104 per visit isn't about charging more — it's
+                        about capturing what you've already earned. Here's how top performers do it.</p>
+                    <a href="#" class="content-card-link">Read the guide &rarr;</a>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="content-card-banner retention"></div>
+                <div class="content-card-body">
+                    <span class="content-tag green">Retention</span>
+                    <div class="content-card-title">The 3.8-Visit Gap: Why Tampa Patients Leave After 11 Visits (And How
+                        to Keep Them to 15)</div>
+                    <p class="content-card-desc">Automated patient engagement isn't about annoying reminders — it's
+                        about staying connected between visits. See the data from 62 Tampa practices.</p>
+                    <a href="#" class="content-card-link">See the case study &rarr;</a>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="content-card-banner migration"></div>
+                <div class="content-card-body">
+                    <span class="content-tag orange">Modernization</span>
+                    <div class="content-card-title">What Switching to a Cloud EHR Actually Looks Like (From Practices
+                        Who've Done It)</div>
+                    <p class="content-card-desc">The #1 fear is disruption. Here's a week-by-week timeline from
+                        practices that migrated — including the one thing they all wish they'd known.</p>
+                    <a href="#" class="content-card-link">Watch the story &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="cta-section" id="cta">
+        <div class="cta-inner">
+            <h2 class="cta-title">See How Your Practice Compares</h2>
+            <p class="cta-subtitle">Get a personalized walkthrough of your Tampa-Orlando benchmarks and discover where
+                the biggest opportunities are for Coastal Spine & Wellness.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">
+                    Schedule a Demo &rarr;
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    &#128196; Download Tampa Report
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+        <div>
+            <img src="https://cdn.prod.website-files.com/640bef7e714c5a171f61c3b9/64d10d38c683344bf0e896d8_logo-for-light-backgrounds.svg"
+                alt="ChiroHD" height="24" style="opacity: 0.5;">
+        </div>
+        <div>
+            Data sourced from ChiroHD customer network, NPI Registry, and Google Maps. All metrics aggregated and
+            anonymized. &copy; 2026 ChiroHD
+        </div>
+    </footer>
+
+    <!-- ═══ TRACKING SIMULATION (visual only) ═══ -->
+    <script>
+        // Simulated engagement tracking — shows what behavioral intelligence would look like
+        document.querySelectorAll('.gauge-card, .opp-card, .pain-card, .content-card').forEach(el => {
+            el.addEventListener('click', function () {
+                const type = this.className;
+                console.log(`[Clinic Strategy Page] Engagement tracked: ${type}`);
+            });
+        });
+
+        // Smooth reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.gauge-card, .opp-card, .pain-card, .content-card, .profile-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+
+</html>
