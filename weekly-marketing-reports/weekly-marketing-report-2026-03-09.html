@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Marketing Report — Q1 Week 8</title>
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            font-size: 14px
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px
+        }
+
+        /* Header */
+        .report-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            padding: 40px 32px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .report-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%
+        }
+
+        .report-header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #fff
+        }
+
+        .report-header .subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            margin-bottom: 0
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.55)
+        }
+
+        .header-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        /* KPI Strip */
+        .kpi-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px
+        }
+
+        .kpi-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #0f3460
+        }
+
+        .kpi-card.green {
+            border-left-color: #2e7d32
+        }
+
+        .kpi-card.amber {
+            border-left-color: #f57c00
+        }
+
+        .kpi-card.red {
+            border-left-color: #c62828
+        }
+
+        .kpi-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.1
+        }
+
+        .kpi-label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px
+        }
+
+        .kpi-detail {
+            font-size: 12px;
+            color: #666;
+            margin-top: 6px
+        }
+
+        .kpi-detail .positive {
+            color: #2e7d32;
+            font-weight: 600
+        }
+
+        .kpi-detail .caution {
+            color: #f57c00;
+            font-weight: 600
+        }
+
+        /* Accordion */
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.2s
+        }
+
+        .section:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12)
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s
+        }
+
+        .section-header:hover {
+            background: #fafbfc
+        }
+
+        .section-header h2 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin: 0;
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .section-header h2 .icon {
+            font-size: 20px;
+            width: 28px;
+            text-align: center
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px
+        }
+
+        .badge-green {
+            background: #e8f5e9;
+            color: #2e7d32
+        }
+
+        .badge-amber {
+            background: #fff3e0;
+            color: #e65100
+        }
+
+        .badge-red {
+            background: #fce4ec;
+            color: #c62828
+        }
+
+        .badge-blue {
+            background: #e3f2fd;
+            color: #1565c0
+        }
+
+        .badge-gray {
+            background: #f5f5f5;
+            color: #666
+        }
+
+        .chevron {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.25s ease;
+            color: #999;
+            flex-shrink: 0;
+            margin-left: 12px
+        }
+
+        .section.open .chevron {
+            transform: rotate(180deg)
+        }
+
+        .section-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 24px
+        }
+
+        .section.open .section-body {
+            max-height: 3000px;
+            padding: 0 24px 24px
+        }
+
+        .section-body::before {
+            content: '';
+            display: block;
+            height: 1px;
+            background: #eee;
+            margin-bottom: 20px
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-bottom: 16px
+        }
+
+        th {
+            background: #16213e;
+            color: #fff;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px
+        }
+
+        th:first-child {
+            border-radius: 6px 0 0 0
+        }
+
+        th:last-child {
+            border-radius: 0 6px 0 0
+        }
+
+        td {
+            padding: 9px 14px;
+            border-bottom: 1px solid #f0f0f0
+        }
+
+        tr:last-child td {
+            border-bottom: none
+        }
+
+        tr:hover td {
+            background: #fafbfc
+        }
+
+        .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 12px
+        }
+
+        .row-total td {
+            font-weight: 700;
+            background: #f8f9fa;
+            border-top: 2px solid #16213e
+        }
+
+        .row-subtotal td {
+            font-weight: 600;
+            background: #fafbfc;
+            border-top: 1px solid #ddd
+        }
+
+        .row-channel td:first-child {
+            padding-left: 28px;
+            color: #666
+        }
+
+        /* Attainment bars */
+        .attainment-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .att-bar-bg {
+            width: 60px;
+            height: 6px;
+            background: #eee;
+            border-radius: 3px;
+            overflow: hidden;
+            flex-shrink: 0
+        }
+
+        .att-bar {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.6s ease
+        }
+
+        .att-green {
+            background: #2e7d32
+        }
+
+        .att-amber {
+            background: #f57c00
+        }
+
+        .att-red {
+            background: #c62828
+        }
+
+        /* Tags */
+        .status-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap
+        }
+
+        .tag-green {
+            background: #e8f5e9;
+            color: #2e7d32
+        }
+
+        .tag-yellow {
+            background: #fff8e1;
+            color: #f57f17
+        }
+
+        .tag-done {
+            background: #f5f5f5;
+            color: #999
+        }
+
+        .tag-not-started {
+            background: #fafafa;
+            color: #bbb
+        }
+
+        /* Content elements */
+        .callout {
+            background: #f8f9fa;
+            border-left: 3px solid #0f3460;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 13px
+        }
+
+        .callout.success {
+            border-left-color: #2e7d32;
+            background: #f1f8f1
+        }
+
+        .callout.warning {
+            border-left-color: #f57c00;
+            background: #fef8f0
+        }
+
+        .callout-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            margin-bottom: 4px
+        }
+
+        .quote {
+            font-style: italic;
+            color: #555;
+            border-left: 3px solid #ddd;
+            padding-left: 14px;
+            margin: 12px 0
+        }
+
+        .quote .attribution {
+            font-style: normal;
+            font-weight: 600;
+            color: #333;
+            display: block;
+            margin-top: 4px
+        }
+
+        .metric-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 12px 0
+        }
+
+        .metric-pill {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 10px 16px;
+            display: flex;
+            flex-direction: column;
+            min-width: 120px
+        }
+
+        .metric-pill .val {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a2e
+        }
+
+        .metric-pill .lbl {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.3px
+        }
+
+        ul.clean {
+            list-style: none;
+            padding: 0
+        }
+
+        ul.clean li {
+            padding: 6px 0;
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 13px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px
+        }
+
+        ul.clean li:last-child {
+            border-bottom: none
+        }
+
+        ul.clean li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background: #0f3460;
+            border-radius: 50%;
+            margin-top: 7px;
+            flex-shrink: 0
+        }
+
+        .sub-section {
+            margin-top: 20px
+        }
+
+        .sub-section h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px
+        }
+
+        .budget-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 4px 16px;
+            font-size: 13px;
+            max-width: 350px
+        }
+
+        .budget-grid .item {
+            color: #555
+        }
+
+        .budget-grid .amt {
+            text-align: right;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums
+        }
+
+        .methodology {
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #eee
+        }
+
+        /* Expand all button */
+        .controls {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 12px;
+            gap: 8px
+        }
+
+        .btn-sm {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.15s
+        }
+
+        .btn-sm:hover {
+            background: #f5f5f5;
+            border-color: #ccc;
+            color: #333
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 12px
+            }
+
+            .report-header {
+                padding: 24px 20px
+            }
+
+            .report-header h1 {
+                font-size: 24px
+            }
+
+            .kpi-strip {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .two-col {
+                grid-template-columns: 1fr
+            }
+
+            .header-meta {
+                flex-direction: column;
+                gap: 4px
+            }
+
+            table {
+                font-size: 12px
+            }
+
+            td, th {
+                padding: 6px 8px
+            }
+
+            .section-header {
+                padding: 14px 16px
+            }
+
+            .section.open .section-body {
+                padding: 0 16px 16px
+            }
+        }
+
+        @media (max-width: 480px) {
+            .kpi-strip {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Password Gate -->
+    <div id="auth-gate" style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#f5f5f5">
+        <div style="background:#fff;border-radius:12px;padding:40px;box-shadow:0 2px 12px rgba(0,0,0,0.1);text-align:center;max-width:380px;width:90%">
+            <div style="font-size:32px;margin-bottom:8px">🔒</div>
+            <h2 style="font-size:20px;color:#1a1a2e;margin:0 0 4px;border:none;padding:0">Weekly Marketing Report</h2>
+            <p style="color:#888;font-size:13px;margin-bottom:24px">Enter the password to view this report</p>
+            <input id="pw-input" type="password" placeholder="Password" autocomplete="off"
+                style="width:100%;padding:12px 16px;border:1px solid #ddd;border-radius:8px;font-size:14px;outline:none;margin-bottom:12px;transition:border-color 0.15s"
+                onfocus="this.style.borderColor='#0f3460'" onblur="this.style.borderColor='#ddd'">
+            <div id="pw-error" style="color:#c62828;font-size:12px;margin-bottom:12px;display:none">Incorrect password</div>
+            <button onclick="checkPassword()"
+                style="width:100%;padding:12px;background:#16213e;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.15s"
+                onmouseover="this.style.background='#0f3460'" onmouseout="this.style.background='#16213e'">
+                View Report
+            </button>
+        </div>
+    </div>
+
+    <div class="container" id="report-content" style="display:none">
+
+        <!-- Header -->
+        <div class="report-header">
+            <h1>Weekly Marketing Report</h1>
+            <div class="subtitle">Q1 2025 — Week 8 of 13</div>
+            <div class="header-meta">
+                <span>72% through working days</span>
+                <span>|</span>
+                <span>Deals cohorted by Q1 origination</span>
+            </div>
+        </div>
+
+        <!-- Top-line KPIs -->
+        <div class="kpi-strip">
+            <div class="kpi-card amber">
+                <div class="kpi-value">191</div>
+                <div class="kpi-label">SQOs (Demos Held)</div>
+                <div class="kpi-detail"><span class="caution">70%</span> of goal (274 pace target)</div>
+            </div>
+            <div class="kpi-card green">
+                <div class="kpi-value">280</div>
+                <div class="kpi-label">SALs (Demos Scheduled)</div>
+                <div class="kpi-detail"><span class="positive">85%</span> of goal (330 pace target)</div>
+            </div>
+            <div class="kpi-card green">
+                <div class="kpi-value">$457.8K</div>
+                <div class="kpi-label">Won ARR</div>
+                <div class="kpi-detail">121 deals closed</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">$880.3K</div>
+                <div class="kpi-label">Total Pipeline</div>
+                <div class="kpi-detail">341 total deals · $302.7K still open</div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn-sm" onclick="toggleAll(true)">Expand All</button>
+            <button class="btn-sm" onclick="toggleAll(false)">Collapse All</button>
+        </div>
+
+        <!-- Section 1: Q1 Pipeline Scorecard -->
+        <div class="section open" id="sec-pipeline">
+            <div class="section-header" onclick="toggle(this)">
+                <h2><span class="icon">📊</span> Q1 Pipeline Scorecard</h2>
+                <div style="display:flex;align-items:center">
+                    <span class="section-badge badge-amber">70% SQO Attainment</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th class="num">SQO Goal</th>
+                            <th class="num">Pace Target</th>
+                            <th class="num">Actual SQOs</th>
+                            <th>SQO Attainment</th>
+                            <th class="num">SAL Goal</th>
+                            <th class="num">Pace Target</th>
+                            <th class="num">Actual SALs</th>
+                            <th>SAL Attainment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Demo Request</strong></td>
+                            <td class="num">270</td>
+                            <td class="num">194</td>
+                            <td class="num">141</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-amber" style="width:73%"></div></div>
+                                    <span style="font-weight:600;color:#f57c00">73%</span>
+                                </div>
+                            </td>
+                            <td class="num">300</td>
+                            <td class="num">216</td>
+                            <td class="num">219</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-green" style="width:100%"></div></div>
+                                    <span style="font-weight:600;color:#2e7d32">101%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Non-Demo SQL</strong></td>
+                            <td class="num">66</td>
+                            <td class="num">48</td>
+                            <td class="num">25</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-red" style="width:52%"></div></div>
+                                    <span style="font-weight:600;color:#c62828">52%</span>
+                                </div>
+                            </td>
+                            <td class="num">99</td>
+                            <td class="num">71</td>
+                            <td class="num">34</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-red" style="width:48%"></div></div>
+                                    <span style="font-weight:600;color:#c62828">48%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Partnership</strong></td>
+                            <td class="num">66</td>
+                            <td class="num">32</td>
+                            <td class="num">25</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-amber" style="width:78%"></div></div>
+                                    <span style="font-weight:600;color:#f57c00">78%</span>
+                                </div>
+                            </td>
+                            <td class="num">60</td>
+                            <td class="num">43</td>
+                            <td class="num">27</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-amber" style="width:63%"></div></div>
+                                    <span style="font-weight:600;color:#f57c00">63%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="row-total">
+                            <td>TOTAL</td>
+                            <td class="num">381</td>
+                            <td class="num">274</td>
+                            <td class="num">191</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-amber" style="width:70%"></div></div>
+                                    <span style="font-weight:600;color:#f57c00">70%</span>
+                                </div>
+                            </td>
+                            <td class="num">459</td>
+                            <td class="num">330</td>
+                            <td class="num">280</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-green" style="width:85%"></div></div>
+                                    <span style="font-weight:600;color:#2e7d32">85%</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="methodology"><strong>Methodology:</strong> Marketing numbers are cohorted by the quarter the Deal (SAL) was created. All Deals in the table above originated in Q1. SALs need time and demos to convert into SQOs, so expect some lag in SQO attainment.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Events Recap -->
+        <div class="section" id="sec-events">
+            <div class="section-header" onclick="toggle(this)">
+                <h2><span class="icon">🎪</span> Events Recap</h2>
+                <div style="display:flex;align-items:center">
+                    <span class="section-badge badge-green">2 Shows Completed</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-body">
+                <div class="callout success">
+                    <div class="callout-label">Highlight</div>
+                    Two successful shows in back-to-back weeks. Give Allison and Jennifer recognition for outstanding execution.
+                </div>
+
+                <div class="quote">
+                    "This was the best event I have been a part of since joining SKED — by a long shot."
+                    <span class="attribution">— Jake, on Parker</span>
+                </div>
+                <div class="quote">
+                    "I think it will go down as my favorite event to date."
+                    <span class="attribution">— Madi, on TRP</span>
+                </div>
+
+                <div class="sub-section">
+                    <h3>Parker University</h3>
+                    <div class="metric-row">
+                        <div class="metric-pill">
+                            <span class="val">520</span>
+                            <span class="lbl">Contacts Captured</span>
+                        </div>
+                        <div class="metric-pill">
+                            <span class="val">337</span>
+                            <span class="lbl">SKED Leads</span>
+                        </div>
+                        <div class="metric-pill">
+                            <span class="val">209</span>
+                            <span class="lbl">ChiroHD Leads</span>
+                        </div>
+                        <div class="metric-pill">
+                            <span class="val">88</span>
+                            <span class="lbl">MQLs Assigned</span>
+                        </div>
+                    </div>
+                    <ul class="clean">
+                        <li>26 duplicates across brands</li>
+                        <li>MQLs include rep-grabbed leads, leads with meaningful notes, and high-ICP-scored contacts</li>
+                        <li>Assigned Friday — 1 demo booked so far; expect many more this week</li>
+                    </ul>
+
+                    <h3 style="margin-top:16px">Parker Budget</h3>
+                    <div class="budget-grid">
+                        <span class="item">Budget (non-T&E)</span><span class="amt">$44,000</span>
+                        <span class="item">Two booth spaces</span><span class="amt">$30,000</span>
+                        <span class="item">Swag</span><span class="amt">$5,500</span>
+                        <span class="item">Giveaways</span><span class="amt">$1,013</span>
+                        <span class="item">Printing</span><span class="amt">$110</span>
+                        <span class="item">Booth shipping</span><span class="amt" style="color:#999">TBD</span>
+                        <span class="item" style="font-weight:700;border-top:1px solid #ddd;padding-top:4px">Actuals (est.)</span>
+                        <span class="amt" style="font-weight:700;border-top:1px solid #ddd;padding-top:4px">~$37,000</span>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <h3>TRP (The Row Performance)</h3>
+                    <div class="callout success">
+                        <div class="callout-label">Prediction</div>
+                        Jarred Young predicts TRP will generate more business than Parker over the next 6 months.
+                    </div>
+                    <div class="metric-row">
+                        <div class="metric-pill">
+                            <span class="val">8</span>
+                            <span class="lbl">ChiroHD Demos Booked</span>
+                        </div>
+                        <div class="metric-pill">
+                            <span class="val">6</span>
+                            <span class="lbl">SKED Demos Booked</span>
+                        </div>
+                        <div class="metric-pill">
+                            <span class="val">5</span>
+                            <span class="lbl">CHD Follow-ups</span>
+                        </div>
+                        <div class="metric-pill">
+                            <span class="val">3</span>
+                            <span class="lbl">VIP Opportunities</span>
+                        </div>
+                    </div>
+                    <ul class="clean">
+                        <li>3 additional SKED follow-ups identified</li>
+                        <li>16 additional ChiroHD leads and 4 SKED-specific leads captured</li>
+                        <li>TRP Vital Signs integration was a "show-stopper" — partners across the floor (CLA, CashPrac, Fortis) referring business unprompted</li>
+                        <li>Unified CHD + SKED booth presence created strong cross-brand synergy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: AI Campaigns -->
+        <div class="section" id="sec-ai">
+            <div class="section-header" onclick="toggle(this)">
+                <h2><span class="icon">🤖</span> AI Campaigns</h2>
+                <div style="display:flex;align-items:center">
+                    <span class="section-badge badge-blue">Testing</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-body">
+                <div class="sub-section">
+                    <h3>Blueprint City-Specific Benchmarks Campaign</h3>
+                    <ul class="clean">
+                        <li>Connected Instantly.ai via MCP server to Claude for automated campaign deployment</li>
+                        <li>Sending a limited cold email test this week</li>
+                    </ul>
+                </div>
+                <div class="sub-section">
+                    <h3>Page-Per-Clinic Campaign</h3>
+                    <ul class="clean">
+                        <li>Built a podcast covering the concept</li>
+                        <li>Sample page live: <a href="https://sales-enablement-one.vercel.app/example-clinic-page.html" target="_blank" style="color:#0f3460">example-clinic-page.html</a></li>
+                        <li>Group brainstorming session scheduled for Tuesday</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Content & AdWords -->
+        <div class="section" id="sec-content">
+            <div class="section-header" onclick="toggle(this)">
+                <h2><span class="icon">📢</span> Content & Paid Media</h2>
+                <div style="display:flex;align-items:center">
+                    <span class="section-badge badge-green">On Track</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-body">
+                <div class="sub-section">
+                    <h3>Content</h3>
+                    <ul class="clean">
+                        <li>Google Review Guide released</li>
+                        <li>March content is heavily clinic-marketing focused — should drive a strong SKED lead month</li>
+                        <li>A couple of meaningful ChiroHD pieces still planned for March</li>
+                    </ul>
+                </div>
+                <div class="sub-section">
+                    <h3>AdWords Update</h3>
+                    <ul class="clean">
+                        <li><strong>New HubSpot dashboards live</strong> — retire previous Google Looker dashboards</li>
+                        <li>Non-branded keywords generating meaningful traffic on both brands</li>
+                        <li>Built marketing channel bottoms-up model for Q2–Q4 planning</li>
+                        <li>Model projects <strong>52% programmatic spend increase</strong> from Q1 to Q4</li>
+                        <li>Forecasts a <strong>37% increase in demo requests</strong></li>
+                        <li>Focus: improving MQL conversion quality</li>
+                    </ul>
+                    <div class="callout">
+                        <div class="callout-label">Dashboards</div>
+                        <strong>CHD:</strong> <a href="https://app.hubspot.com/reports-dashboard/7120555/view/19118876" target="_blank" style="color:#0f3460">HubSpot Dashboard</a><br>
+                        <strong>SKED:</strong> <a href="https://app.hubspot.com/reports-dashboard/7120555/view/19117924" target="_blank" style="color:#0f3460">HubSpot Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Discussion Topics -->
+        <div class="section" id="sec-discussion">
+            <div class="section-header" onclick="toggle(this)">
+                <h2><span class="icon">💬</span> Discussion Topics</h2>
+                <div style="display:flex;align-items:center">
+                    <span class="section-badge badge-amber">Needs Alignment</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-body">
+                <ul class="clean">
+                    <li><strong>Digital Conference:</strong> Should Dr. Erik's event become a branded conference that evolves into an in-person event next year, or remain unbranded?</li>
+                    <li><strong>Alina Launch Strategy:</strong> Need full leadership team aligned on launch approach and go/no-go gates</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 6: Workstream Tracker -->
+        <div class="section" id="sec-workstreams">
+            <div class="section-header" onclick="toggle(this)">
+                <h2><span class="icon">🔄</span> Workstream Tracker</h2>
+                <div style="display:flex;align-items:center">
+                    <span class="section-badge badge-gray">16 Workstreams</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:30%">Workstream</th>
+                            <th style="width:12%">Status</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Marketing → BDR Lead Pass</strong></td>
+                            <td><span class="status-tag tag-yellow">Yellow</span></td>
+                            <td>Some improvement, but still just 48% of SAL target. Watching event lead conversion closely.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Partnerships</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>Successful TRP show.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>State of Industry</strong></td>
+                            <td><span class="status-tag tag-done">Done</span></td>
+                            <td>Complete.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Alina Launch</strong></td>
+                            <td><span class="status-tag tag-yellow">Yellow</span></td>
+                            <td>Next step: ELT discussion on approach. <a href="https://sked.life/meet-alina/" target="_blank" style="color:#0f3460">Preview page (unlinked)</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Parker Conference</strong></td>
+                            <td><span class="status-tag tag-done">Done</span></td>
+                            <td>Complete.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dr. Erik's Digital Conference</strong></td>
+                            <td><span class="status-tag tag-yellow">Yellow</span></td>
+                            <td>Needs ELT discussion: branded event → in-person next year, or stay unbranded?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GTM w/ Jordan Crawford</strong></td>
+                            <td><span class="status-tag tag-yellow">Yellow</span></td>
+                            <td>Connected Instantly.ai via MCP for cold sends. Testing first limited marketing-led blueprint campaign this week.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Brand Redesign</strong></td>
+                            <td><span class="status-tag tag-yellow">Yellow</span></td>
+                            <td>Could really use a Product Marketing hire to run this.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AdWords Relaunch</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>New HubSpot dashboards live. Non-branded keywords hitting on both brands.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bottoms-Up Funnel Model</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>Built this past week.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Retention ICP w/ Mainsail</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>Jack (Mainsail) in conversation with Kathryn &amp; Candice.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Landing Page per Clinic</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>Podcast built to preview idea; brainstorming session scheduled.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Platinum Campaign</strong></td>
+                            <td><span class="status-tag tag-not-started">Not Started</span></td>
+                            <td>Need to determine product requirements first (calling module, etc.).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Newsletter Launch</strong></td>
+                            <td><span class="status-tag tag-not-started">Not Started</span></td>
+                            <td>Could accelerate with a Product Marketing hire.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fresh Case Studies</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>Identifying new targets.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HubSpot Lead Scoring</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>Proposal in progress.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 7: Channel Performance -->
+        <div class="section" id="sec-channel">
+            <div class="section-header" onclick="toggle(this)">
+                <h2><span class="icon">📈</span> Channel Performance</h2>
+                <div style="display:flex;align-items:center">
+                    <span class="section-badge badge-blue">$880.3K Pipeline</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-body">
+                <div style="overflow-x:auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Channel</th>
+                            <th>Deal Type</th>
+                            <th class="num">Demos</th>
+                            <th class="num">Won #</th>
+                            <th class="num">Won ARR</th>
+                            <th class="num">Lost #</th>
+                            <th class="num">Lost ARR</th>
+                            <th class="num">Open #</th>
+                            <th class="num">Open ARR</th>
+                            <th class="num">Total #</th>
+                            <th class="num">Total ARR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Inbound -->
+                        <tr>
+                            <td rowspan="3"><strong>Inbound</strong></td>
+                            <td>Net New</td>
+                            <td class="num">102</td>
+                            <td class="num">39</td>
+                            <td class="num">$169.2K</td>
+                            <td class="num">35</td>
+                            <td class="num">$79.0K</td>
+                            <td class="num">44</td>
+                            <td class="num">$189.4K</td>
+                            <td class="num">118</td>
+                            <td class="num">$437.6K</td>
+                        </tr>
+                        <tr>
+                            <td>Upsell / X-Sell</td>
+                            <td class="num">33</td>
+                            <td class="num">41</td>
+                            <td class="num">$129.6K</td>
+                            <td class="num">7</td>
+                            <td class="num">$2.3K</td>
+                            <td class="num">9</td>
+                            <td class="num">$18.4K</td>
+                            <td class="num">57</td>
+                            <td class="num">$150.3K</td>
+                        </tr>
+                        <tr class="row-subtotal">
+                            <td><em>Subtotal</em></td>
+                            <td class="num">141</td>
+                            <td class="num">80</td>
+                            <td class="num">$298.8K</td>
+                            <td class="num">43</td>
+                            <td class="num">$81.3K</td>
+                            <td class="num">96</td>
+                            <td class="num">$207.8K</td>
+                            <td class="num">219</td>
+                            <td class="num">$587.9K</td>
+                        </tr>
+
+                        <!-- Outbound -->
+                        <tr>
+                            <td rowspan="3"><strong>Outbound</strong></td>
+                            <td>Net New</td>
+                            <td class="num">12</td>
+                            <td class="num">2</td>
+                            <td class="num">$5.9K</td>
+                            <td class="num">9</td>
+                            <td class="num">$13.4K</td>
+                            <td class="num">4</td>
+                            <td class="num">$13.9K</td>
+                            <td class="num">15</td>
+                            <td class="num">$33.1K</td>
+                        </tr>
+                        <tr>
+                            <td>Upsell / X-Sell</td>
+                            <td class="num">13</td>
+                            <td class="num">5</td>
+                            <td class="num">$22.5K</td>
+                            <td class="num">7</td>
+                            <td class="num">$12.2K</td>
+                            <td class="num">3</td>
+                            <td class="num">$6.7K</td>
+                            <td class="num">15</td>
+                            <td class="num">$41.4K</td>
+                        </tr>
+                        <tr class="row-subtotal">
+                            <td><em>Subtotal</em></td>
+                            <td class="num">25</td>
+                            <td class="num">7</td>
+                            <td class="num">$28.3K</td>
+                            <td class="num">16</td>
+                            <td class="num">$25.6K</td>
+                            <td class="num">11</td>
+                            <td class="num">$20.6K</td>
+                            <td class="num">34</td>
+                            <td class="num">$74.5K</td>
+                        </tr>
+
+                        <!-- Self-Gen -->
+                        <tr>
+                            <td rowspan="3"><strong>Self-Gen</strong></td>
+                            <td>Net New</td>
+                            <td class="num">13</td>
+                            <td class="num">5</td>
+                            <td class="num">$27.9K</td>
+                            <td class="num">4</td>
+                            <td class="num">$0</td>
+                            <td class="num">7</td>
+                            <td class="num">$19.4K</td>
+                            <td class="num">16</td>
+                            <td class="num">$47.3K</td>
+                        </tr>
+                        <tr>
+                            <td>Upsell / X-Sell</td>
+                            <td class="num">19</td>
+                            <td class="num">11</td>
+                            <td class="num">$34.5K</td>
+                            <td class="num">5</td>
+                            <td class="num">$3.0K</td>
+                            <td class="num">7</td>
+                            <td class="num">$12.8K</td>
+                            <td class="num">23</td>
+                            <td class="num">$50.2K</td>
+                        </tr>
+                        <tr class="row-subtotal">
+                            <td><em>Subtotal</em></td>
+                            <td class="num">33</td>
+                            <td class="num">16</td>
+                            <td class="num">$62.4K</td>
+                            <td class="num">9</td>
+                            <td class="num">$3.0K</td>
+                            <td class="num">16</td>
+                            <td class="num">$32.2K</td>
+                            <td class="num">41</td>
+                            <td class="num">$97.5K</td>
+                        </tr>
+
+                        <!-- Partner -->
+                        <tr>
+                            <td rowspan="3"><strong>Partner</strong></td>
+                            <td>Net New</td>
+                            <td class="num">19</td>
+                            <td class="num">11</td>
+                            <td class="num">$48.4K</td>
+                            <td class="num">3</td>
+                            <td class="num">$9.9K</td>
+                            <td class="num">6</td>
+                            <td class="num">$21.7K</td>
+                            <td class="num">20</td>
+                            <td class="num">$80.0K</td>
+                        </tr>
+                        <tr>
+                            <td>Upsell / X-Sell</td>
+                            <td class="num">6</td>
+                            <td class="num">7</td>
+                            <td class="num">$19.9K</td>
+                            <td class="num">0</td>
+                            <td class="num">$0</td>
+                            <td class="num">0</td>
+                            <td class="num">$0</td>
+                            <td class="num">7</td>
+                            <td class="num">$19.9K</td>
+                        </tr>
+                        <tr class="row-subtotal">
+                            <td><em>Subtotal</em></td>
+                            <td class="num">25</td>
+                            <td class="num">18</td>
+                            <td class="num">$68.3K</td>
+                            <td class="num">3</td>
+                            <td class="num">$9.9K</td>
+                            <td class="num">6</td>
+                            <td class="num">$21.7K</td>
+                            <td class="num">27</td>
+                            <td class="num">$100.0K</td>
+                        </tr>
+
+                        <!-- Unattributed -->
+                        <tr>
+                            <td rowspan="3" style="color:#999"><strong>Unattributed</strong></td>
+                            <td style="color:#999">Net New</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#999">Upsell / X-Sell</td>
+                            <td class="num" style="color:#999">3</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0</td>
+                            <td class="num" style="color:#999">5</td>
+                            <td class="num" style="color:#999">$8.2K</td>
+                            <td class="num" style="color:#999">5</td>
+                            <td class="num" style="color:#999">$8.2K</td>
+                        </tr>
+                        <tr class="row-subtotal">
+                            <td style="color:#999"><em>Subtotal</em></td>
+                            <td class="num" style="color:#999">6</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0</td>
+                            <td class="num" style="color:#999">20</td>
+                            <td class="num" style="color:#999">$20.4K</td>
+                            <td class="num" style="color:#999">20</td>
+                            <td class="num" style="color:#999">$20.4K</td>
+                        </tr>
+
+                        <!-- Grand Total -->
+                        <tr class="row-total">
+                            <td colspan="2"><strong>GRAND TOTAL</strong></td>
+                            <td class="num">230</td>
+                            <td class="num">121</td>
+                            <td class="num">$457.8K</td>
+                            <td class="num">71</td>
+                            <td class="num">$119.8K</td>
+                            <td class="num">149</td>
+                            <td class="num">$302.7K</td>
+                            <td class="num">341</td>
+                            <td class="num">$880.3K</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Password: change this to whatever you want
+        const REPORT_PASSWORD = 'Ch1roHD&SK3D';
+
+        function checkPassword() {
+            const input = document.getElementById('pw-input');
+            if (input.value === REPORT_PASSWORD) {
+                document.getElementById('auth-gate').style.display = 'none';
+                document.getElementById('report-content').style.display = 'block';
+                sessionStorage.setItem('report-auth', 'true');
+            } else {
+                document.getElementById('pw-error').style.display = 'block';
+                input.style.borderColor = '#c62828';
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('pw-input').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+
+        // Persist for the browser session so refreshes don't re-prompt
+        if (sessionStorage.getItem('report-auth') === 'true') {
+            document.getElementById('auth-gate').style.display = 'none';
+            document.getElementById('report-content').style.display = 'block';
+        }
+
+        function toggle(header) {
+            header.closest('.section').classList.toggle('open');
+        }
+
+        function toggleAll(open) {
+            document.querySelectorAll('.section').forEach(s => {
+                if (open) s.classList.add('open');
+                else s.classList.remove('open');
+            });
+        }
+    </script>
+</body>
+
+</html>
