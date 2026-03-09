@@ -608,25 +608,7 @@
 </head>
 
 <body>
-    <!-- Password Gate -->
-    <div id="auth-gate" style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#f5f5f5">
-        <div style="background:#fff;border-radius:12px;padding:40px;box-shadow:0 2px 12px rgba(0,0,0,0.1);text-align:center;max-width:380px;width:90%">
-            <div style="font-size:32px;margin-bottom:8px">🔒</div>
-            <h2 style="font-size:20px;color:#1a1a2e;margin:0 0 4px;border:none;padding:0">Weekly Marketing Report</h2>
-            <p style="color:#888;font-size:13px;margin-bottom:24px">Enter the password to view this report</p>
-            <input id="pw-input" type="password" placeholder="Password" autocomplete="off"
-                style="width:100%;padding:12px 16px;border:1px solid #ddd;border-radius:8px;font-size:14px;outline:none;margin-bottom:12px;transition:border-color 0.15s"
-                onfocus="this.style.borderColor='#0f3460'" onblur="this.style.borderColor='#ddd'">
-            <div id="pw-error" style="color:#c62828;font-size:12px;margin-bottom:12px;display:none">Incorrect password</div>
-            <button onclick="checkPassword()"
-                style="width:100%;padding:12px;background:#16213e;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.15s"
-                onmouseover="this.style.background='#0f3460'" onmouseout="this.style.background='#16213e'">
-                View Report
-            </button>
-        </div>
-    </div>
-
-    <div class="container" id="report-content" style="display:none">
+    <div class="container">
 
         <!-- Header -->
         <div class="report-header">
@@ -1312,34 +1294,6 @@
     </div>
 
     <script>
-        // Password: change this to whatever you want
-        const REPORT_PASSWORD = 'Ch1roHD&SK3D';
-
-        function checkPassword() {
-            const input = document.getElementById('pw-input');
-            if (input.value === REPORT_PASSWORD) {
-                document.getElementById('auth-gate').style.display = 'none';
-                document.getElementById('report-content').style.display = 'block';
-                sessionStorage.setItem('report-auth', 'true');
-            } else {
-                document.getElementById('pw-error').style.display = 'block';
-                input.style.borderColor = '#c62828';
-                input.value = '';
-                input.focus();
-            }
-        }
-
-        // Allow Enter key to submit
-        document.getElementById('pw-input').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') checkPassword();
-        });
-
-        // Persist for the browser session so refreshes don't re-prompt
-        if (sessionStorage.getItem('report-auth') === 'true') {
-            document.getElementById('auth-gate').style.display = 'none';
-            document.getElementById('report-content').style.display = 'block';
-        }
-
         function toggle(header) {
             header.closest('.section').classList.toggle('open');
         }
