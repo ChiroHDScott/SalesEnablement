@@ -1,5 +1,5 @@
 export const config = {
-  matcher: '/weekly-marketing-reports/:path*',
+  matcher: '/reports/:path*',
 };
 
 export default function middleware(request) {
