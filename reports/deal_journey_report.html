@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deal Journey Report — ChiroHD/SKED</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    body { background: #f4f6f9; font-family: 'Segoe UI', sans-serif; }
+    .hero-stat { background: #fff; border-radius: 12px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .hero-stat .number { font-size: 2.2rem; font-weight: 700; line-height: 1; }
+    .section-title { font-size: 1.1rem; font-weight: 700; color: #2c3e50; border-left: 4px solid #3498db; padding-left: 10px; margin: 28px 0 14px; }
+    .card { border: none; border-radius: 10px; }
+    .card-header { border-radius: 10px 10px 0 0 !important; font-size: .9rem; }
+    table th { white-space: nowrap; }
+    .badge { font-size: .7rem; }
+    .note { font-size: .78rem; color: #666; margin-top: 6px; }
+  </style>
+</head>
+<body>
+<div class="container-fluid px-4 py-4">
+
+  <!-- Header -->
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <div>
+      <h1 class="mb-0" style="font-size:1.6rem;font-weight:700">Deal Journey — Multi-Touch Report</h1>
+      <p class="text-muted mb-0">Deals created 2024-10-01 through present &nbsp;·&nbsp; All channels &nbsp;·&nbsp; CW / CL / Open Pipeline</p>
+    </div>
+    <div class="text-muted" style="font-size:.8rem">Generated from HubSpot CRM data</div>
+  </div>
+
+  <!-- Hero stats -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <div class="hero-stat">
+        <div class="number text-success">1,040</div>
+        <div class="text-muted">Closed Won</div>
+        <div style="font-size:.8rem;color:#888">CHD: 592 &nbsp;·&nbsp; SKED: 448</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="hero-stat">
+        <div class="number text-danger">480</div>
+        <div class="text-muted">Closed Lost</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="hero-stat">
+        <div class="number text-primary">499</div>
+        <div class="text-muted">Open Pipeline</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="hero-stat">
+        <div class="number" style="color:#8e44ad">68.4%</div>
+        <div class="text-muted">CW Rate (vs. Closed)</div>
+        <div style="font-size:.8rem;color:#888">Won ARR: $3,899,757</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Monthly volume chart -->
+  <div class="section-title">Monthly Deal Volume by Outcome</div>
+  <div class="row g-3 mb-2">
+    <div class="col-lg-8">
+      <div class="card shadow-sm p-3">
+        <canvas id="monthlyBar" height="90"></canvas>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">Monthly Breakdown</div>
+        <div class="table-responsive" style="max-height:340px;overflow-y:auto">
+          <table class="table table-sm table-hover mb-0">
+            <thead class="table-light sticky-top">
+              <tr><th>Month</th><th>CW</th><th>CL</th><th>Open</th><th>Total</th><th>CW%</th></tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td><strong>2024-10</strong></td>
+          <td class="text-success fw-bold">51</td>
+          <td class="text-danger">24</td>
+          <td class="text-primary">14</td>
+          <td>89</td>
+          <td><span style="color:#1a7a4a;font-weight:600">68.0%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2024-11</strong></td>
+          <td class="text-success fw-bold">49</td>
+          <td class="text-danger">23</td>
+          <td class="text-primary">10</td>
+          <td>82</td>
+          <td><span style="color:#1a7a4a;font-weight:600">68.1%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2024-12</strong></td>
+          <td class="text-success fw-bold">43</td>
+          <td class="text-danger">11</td>
+          <td class="text-primary">14</td>
+          <td>68</td>
+          <td><span style="color:#1a7a4a;font-weight:600">79.6%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-01</strong></td>
+          <td class="text-success fw-bold">59</td>
+          <td class="text-danger">33</td>
+          <td class="text-primary">10</td>
+          <td>102</td>
+          <td><span style="color:#1a7a4a;font-weight:600">64.1%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-02</strong></td>
+          <td class="text-success fw-bold">57</td>
+          <td class="text-danger">27</td>
+          <td class="text-primary">16</td>
+          <td>100</td>
+          <td><span style="color:#1a7a4a;font-weight:600">67.9%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-03</strong></td>
+          <td class="text-success fw-bold">74</td>
+          <td class="text-danger">39</td>
+          <td class="text-primary">13</td>
+          <td>126</td>
+          <td><span style="color:#1a7a4a;font-weight:600">65.5%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-04</strong></td>
+          <td class="text-success fw-bold">55</td>
+          <td class="text-danger">40</td>
+          <td class="text-primary">19</td>
+          <td>114</td>
+          <td><span style="color:#2ecc71;font-weight:600">57.9%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-05</strong></td>
+          <td class="text-success fw-bold">44</td>
+          <td class="text-danger">31</td>
+          <td class="text-primary">15</td>
+          <td>90</td>
+          <td><span style="color:#2ecc71;font-weight:600">58.7%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-06</strong></td>
+          <td class="text-success fw-bold">45</td>
+          <td class="text-danger">25</td>
+          <td class="text-primary">20</td>
+          <td>90</td>
+          <td><span style="color:#1a7a4a;font-weight:600">64.3%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-07</strong></td>
+          <td class="text-success fw-bold">40</td>
+          <td class="text-danger">26</td>
+          <td class="text-primary">14</td>
+          <td>80</td>
+          <td><span style="color:#1a7a4a;font-weight:600">60.6%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-08</strong></td>
+          <td class="text-success fw-bold">60</td>
+          <td class="text-danger">42</td>
+          <td class="text-primary">14</td>
+          <td>116</td>
+          <td><span style="color:#2ecc71;font-weight:600">58.8%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-09</strong></td>
+          <td class="text-success fw-bold">42</td>
+          <td class="text-danger">26</td>
+          <td class="text-primary">17</td>
+          <td>85</td>
+          <td><span style="color:#1a7a4a;font-weight:600">61.8%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-10</strong></td>
+          <td class="text-success fw-bold">96</td>
+          <td class="text-danger">32</td>
+          <td class="text-primary">41</td>
+          <td>169</td>
+          <td><span style="color:#1a7a4a;font-weight:600">75.0%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-11</strong></td>
+          <td class="text-success fw-bold">85</td>
+          <td class="text-danger">31</td>
+          <td class="text-primary">36</td>
+          <td>152</td>
+          <td><span style="color:#1a7a4a;font-weight:600">73.3%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2025-12</strong></td>
+          <td class="text-success fw-bold">103</td>
+          <td class="text-danger">31</td>
+          <td class="text-primary">35</td>
+          <td>169</td>
+          <td><span style="color:#1a7a4a;font-weight:600">76.9%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2026-01</strong></td>
+          <td class="text-success fw-bold">67</td>
+          <td class="text-danger">23</td>
+          <td class="text-primary">60</td>
+          <td>150</td>
+          <td><span style="color:#1a7a4a;font-weight:600">74.4%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2026-02</strong></td>
+          <td class="text-success fw-bold">54</td>
+          <td class="text-danger">15</td>
+          <td class="text-primary">85</td>
+          <td>154</td>
+          <td><span style="color:#1a7a4a;font-weight:600">78.3%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2026-03</strong></td>
+          <td class="text-success fw-bold">16</td>
+          <td class="text-danger">1</td>
+          <td class="text-primary">66</td>
+          <td>83</td>
+          <td><span style="color:#1a7a4a;font-weight:600">94.1%</span></td>
+        </tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="note">CW% = Closed Won ÷ (Closed Won + Closed Lost). Open pipeline deals have no denominator yet.</p>
+
+  <!-- Net New vs Existing — deal count -->
+  <div class="section-title">Closed Won — Net New vs Existing Business (Deal Count)</div>
+  <div class="row g-3 mb-2">
+    <div class="col-lg-9">
+      <div class="card shadow-sm p-3">
+        <div style="position:relative;height:360px">
+          <canvas id="nnCountChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card shadow-sm p-3 h-100 d-flex flex-column justify-content-center">
+        <div class="text-center mb-2">
+          <div style="font-size:1.6rem;font-weight:700;color:#2ecc71">1,040</div>
+          <div class="text-muted" style="font-size:.85rem">Total Closed Won</div>
+        </div>
+        <hr class="my-2">
+        <div class="text-center mb-2">
+          <div style="font-size:1.6rem;font-weight:700;color:#3498db">761</div>
+          <div class="text-muted" style="font-size:.85rem">Net New Won</div>
+          <div style="font-size:.8rem;color:#888">ARR: $3,076,299</div>
+        </div>
+        <hr class="my-2">
+        <div class="text-center mb-2">
+          <div style="font-size:1.6rem;font-weight:700;color:#e67e22">279</div>
+          <div class="text-muted" style="font-size:.85rem">Existing Won</div>
+          <div style="font-size:.8rem;color:#888">ARR: $823,458</div>
+        </div>
+        <hr class="my-2">
+        <div class="text-center">
+          <div style="font-size:1.6rem;font-weight:700;color:#9b59b6">499</div>
+          <div class="text-muted" style="font-size:.85rem">Still Open</div>
+          <div style="font-size:.8rem;color:#888">Pipeline ARR: $1,055,339</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Net New vs Existing — ARR -->
+  <div class="section-title">Closed Won — Net New vs Existing Business (ARR $)</div>
+  <div class="card shadow-sm p-3 mb-3">
+    <div style="position:relative;height:360px">
+      <canvas id="nnArrChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Meta Paid Social section -->
+  <div class="section-title">Meta Paid Social — Deal Touches by Month (Oct 2025+)</div>
+  <p class="note mb-2">
+    Deals where <strong>any associated contact</strong> had <code>PAID_SOCIAL</code> as their first-touch or most-recent source in HubSpot (Facebook/Instagram ads).
+    Oct 2025–present: <strong>40 deals</strong> touched by Meta out of 877 total (4.6%).
+    Of closed deals: <strong>75.0% CW rate</strong> vs. overall pipeline win rate.
+    Meta appears primarily as a <em>mid-funnel re-engagement channel</em> rather than top-of-funnel acquisition — only ~5 contacts have Meta as their original first touch.
+  </p>
+  <div class="row g-3 mb-3">
+    <div class="col-lg-8">
+      <div class="card shadow-sm p-3">
+        <canvas id="metaChart" height="130"></canvas>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">Meta Touch by Month</div>
+        <div class="table-responsive" style="max-height:340px;overflow-y:auto">
+          <table class="table table-sm table-hover mb-0">
+            <thead class="table-light sticky-top">
+              <tr><th>Month</th><th>CW (of total)</th><th>CL (of total)</th><th>Open (of total)</th></tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td><strong>2025-10</strong></td>
+          <td class="text-center text-success fw-bold">1 <small class="text-muted fw-normal">/ 96 (1.0%)</small></td>
+          <td class="text-center text-danger">1 <small class="text-muted fw-normal">/ 32 (3.1%)</small></td>
+          <td class="text-center text-primary">3 <small class="text-muted fw-normal">/ 41 (7.3%)</small></td>
+        </tr>
+        <tr>
+          <td><strong>2025-11</strong></td>
+          <td class="text-center text-success fw-bold">5 <small class="text-muted fw-normal">/ 85 (5.9%)</small></td>
+          <td class="text-center text-danger">0 <small class="text-muted fw-normal">/ 31 (0.0%)</small></td>
+          <td class="text-center text-primary">0 <small class="text-muted fw-normal">/ 36 (0.0%)</small></td>
+        </tr>
+        <tr>
+          <td><strong>2025-12</strong></td>
+          <td class="text-center text-success fw-bold">4 <small class="text-muted fw-normal">/ 103 (3.9%)</small></td>
+          <td class="text-center text-danger">2 <small class="text-muted fw-normal">/ 31 (6.5%)</small></td>
+          <td class="text-center text-primary">0 <small class="text-muted fw-normal">/ 35 (0.0%)</small></td>
+        </tr>
+        <tr>
+          <td><strong>2026-01</strong></td>
+          <td class="text-center text-success fw-bold">4 <small class="text-muted fw-normal">/ 67 (6.0%)</small></td>
+          <td class="text-center text-danger">1 <small class="text-muted fw-normal">/ 23 (4.3%)</small></td>
+          <td class="text-center text-primary">6 <small class="text-muted fw-normal">/ 60 (10.0%)</small></td>
+        </tr>
+        <tr>
+          <td><strong>2026-02</strong></td>
+          <td class="text-center text-success fw-bold">3 <small class="text-muted fw-normal">/ 54 (5.6%)</small></td>
+          <td class="text-center text-danger">2 <small class="text-muted fw-normal">/ 15 (13.3%)</small></td>
+          <td class="text-center text-primary">6 <small class="text-muted fw-normal">/ 85 (7.1%)</small></td>
+        </tr>
+        <tr>
+          <td><strong>2026-03</strong></td>
+          <td class="text-center text-success fw-bold">1 <small class="text-muted fw-normal">/ 16 (6.2%)</small></td>
+          <td class="text-center text-danger">0 <small class="text-muted fw-normal">/ 1 (0.0%)</small></td>
+          <td class="text-center text-primary">1 <small class="text-muted fw-normal">/ 66 (1.5%)</small></td>
+        </tr></tbody>
+            <tfoot class="table-secondary">
+              <tr>
+                <td><strong>Total</strong></td>
+                <td class="text-success fw-bold">18</td>
+                <td class="text-danger">6</td>
+                <td class="text-primary">16</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MQL type breakdown -->
+  <div class="section-title">Closed Won by MQL Type (What Drove the Deal)</div>
+  <div class="row g-3 mb-2">
+    <div class="col-lg-6">
+      <div class="card shadow-sm p-3">
+        <canvas id="mqlChart" height="120"></canvas>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <!-- Acquisition channel breakdown -->
+      <div class="card shadow-sm p-3">
+        <canvas id="acqChart" height="120"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Channel effectiveness table -->
+  <div class="section-title">Channel Effectiveness — CW / CL / Open & Win Rate</div>
+  <p class="note mb-2">"Deals with channel" = deal had at least one touch from this channel before deal creation. "Lift" = CW rate lift vs. deals WITHOUT this channel.</p>
+  <div class="card shadow-sm mb-3">
+    <div class="table-responsive">
+      <table class="table table-hover table-sm mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th>Channel</th>
+            <th class="text-center">Deals w/ Touch</th>
+            <th class="text-center">CW</th>
+            <th class="text-center">CL</th>
+            <th class="text-center">Open</th>
+            <th class="text-center">CW Rate</th>
+            <th class="text-center">Lift vs. Without</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Content / Form Fill</strong></td>
+          <td class="text-center">584</td>
+          <td class="text-center text-success fw-bold">339</td>
+          <td class="text-center text-danger">68</td>
+          <td class="text-center text-primary">177</td>
+          <td class="text-center"><span style="color:#1a7a4a;font-weight:600">83.3%</span></td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">+20.3pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>Marketing Email Open</strong></td>
+          <td class="text-center">311</td>
+          <td class="text-center text-success fw-bold">192</td>
+          <td class="text-center text-danger">24</td>
+          <td class="text-center text-primary">95</td>
+          <td class="text-center"><span style="color:#1a7a4a;font-weight:600">88.9%</span></td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">+23.9pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>Marketing Email Click</strong></td>
+          <td class="text-center">238</td>
+          <td class="text-center text-success fw-bold">150</td>
+          <td class="text-center text-danger">18</td>
+          <td class="text-center text-primary">70</td>
+          <td class="text-center"><span style="color:#1a7a4a;font-weight:600">89.3%</span></td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">+23.5pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>Sales Sequence</strong></td>
+          <td class="text-center">241</td>
+          <td class="text-center text-success fw-bold">123</td>
+          <td class="text-center text-danger">17</td>
+          <td class="text-center text-primary">101</td>
+          <td class="text-center"><span style="color:#1a7a4a;font-weight:600">87.9%</span></td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">+21.5pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>Demo Booked</strong></td>
+          <td class="text-center">73</td>
+          <td class="text-center text-success fw-bold">46</td>
+          <td class="text-center text-danger">4</td>
+          <td class="text-center text-primary">23</td>
+          <td class="text-center"><span style="color:#1a7a4a;font-weight:600">92.0%</span></td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">+24.4pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>Paid Search (Google Ads)</strong></td>
+          <td class="text-center">48</td>
+          <td class="text-center text-success fw-bold">25</td>
+          <td class="text-center text-danger">4</td>
+          <td class="text-center text-primary">19</td>
+          <td class="text-center"><span style="color:#1a7a4a;font-weight:600">86.2%</span></td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">+18.1pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>Organic Search (SEO)</strong></td>
+          <td class="text-center">40</td>
+          <td class="text-center text-success fw-bold">19</td>
+          <td class="text-center text-danger">13</td>
+          <td class="text-center text-primary">8</td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">59.4%</span></td>
+          <td class="text-center"><span style="color:#e74c3c;font-weight:600">-9.2pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>BDR Email</strong></td>
+          <td class="text-center">59</td>
+          <td class="text-center text-success fw-bold">17</td>
+          <td class="text-center text-danger">5</td>
+          <td class="text-center text-primary">37</td>
+          <td class="text-center"><span style="color:#1a7a4a;font-weight:600">77.3%</span></td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">+9.0pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>Webinar Registered</strong></td>
+          <td class="text-center">27</td>
+          <td class="text-center text-success fw-bold">13</td>
+          <td class="text-center text-danger">0</td>
+          <td class="text-center text-primary">14</td>
+          <td class="text-center"><span style="color:#1a7a4a;font-weight:600">100.0%</span></td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">+31.9pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>BDR Call</strong></td>
+          <td class="text-center">35</td>
+          <td class="text-center text-success fw-bold">12</td>
+          <td class="text-center text-danger">2</td>
+          <td class="text-center text-primary">21</td>
+          <td class="text-center"><span style="color:#1a7a4a;font-weight:600">85.7%</span></td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">+17.4pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>Outbound (BDR/AE)</strong></td>
+          <td class="text-center">24</td>
+          <td class="text-center text-success fw-bold">8</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-primary">15</td>
+          <td class="text-center"><span style="color:#1a7a4a;font-weight:600">88.9%</span></td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">+20.6pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>Partner Referral</strong></td>
+          <td class="text-center">9</td>
+          <td class="text-center text-success fw-bold">6</td>
+          <td class="text-center text-danger">1</td>
+          <td class="text-center text-primary">2</td>
+          <td class="text-center"><span style="color:#1a7a4a;font-weight:600">85.7%</span></td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">+17.4pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>Paid Social (Meta)</strong></td>
+          <td class="text-center">21</td>
+          <td class="text-center text-success fw-bold">4</td>
+          <td class="text-center text-danger">4</td>
+          <td class="text-center text-primary">13</td>
+          <td class="text-center"><span style="color:#2ecc71;font-weight:600">50.0%</span></td>
+          <td class="text-center"><span style="color:#e74c3c;font-weight:600">-18.5pp</span></td>
+        </tr>
+        <tr>
+          <td><strong>Webinar Attended</strong></td>
+          <td class="text-center">3</td>
+          <td class="text-center text-success fw-bold">0</td>
+          <td class="text-center text-danger">0</td>
+          <td class="text-center text-primary">3</td>
+          <td class="text-center"><span style="color:#e74c3c;font-weight:600">0%</span></td>
+          <td class="text-center"><span style="color:#e74c3c;font-weight:600">-68.4pp</span></td>
+        </tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Month × Channel heatmap -->
+  <div class="section-title">Month × Channel Heatmap (Closed Won count)</div>
+  <div class="card shadow-sm p-3 mb-3" style="overflow-x:auto">
+    
+        <table class="table table-sm table-bordered text-center" style="font-size:12px">
+          <thead class="table-dark">
+            <tr><th>Channel</th><th>10</th><th>11</th><th>12</th><th>01</th><th>02</th><th>03</th><th>04</th><th>05</th><th>06</th><th>07</th><th>08</th><th>09</th><th>10</th><th>11</th><th>12</th><th>01</th><th>02</th><th>03</th></tr>
+          </thead>
+          <tbody><tr><td class='text-start fw-semibold'>Content / Form Fill</td><td style='background:rgba(46,204,113,0.36);font-weight:600'>9</td><td style='background:rgba(46,204,113,0.54);font-weight:600'>19</td><td style='background:rgba(46,204,113,0.41);font-weight:600'>12</td><td style='background:rgba(46,204,113,0.34);font-weight:600'>8</td><td style='background:rgba(46,204,113,0.34);font-weight:600'>8</td><td style='background:rgba(46,204,113,0.41);font-weight:600'>12</td><td style='background:rgba(46,204,113,0.38);font-weight:600'>10</td><td style='background:rgba(46,204,113,0.45);font-weight:600'>14</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>11</td><td style='background:rgba(46,204,113,0.36);font-weight:600'>9</td><td style='background:rgba(46,204,113,0.64);font-weight:600'>25</td><td style='background:rgba(46,204,113,0.54);font-weight:600'>19</td><td style='background:rgba(46,204,113,0.88);font-weight:600'>38</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>45</td><td style='background:rgba(46,204,113,0.86);font-weight:600'>37</td><td style='background:rgba(46,204,113,0.73);font-weight:600'>30</td><td style='background:rgba(46,204,113,0.70);font-weight:600'>28</td><td style='background:rgba(46,204,113,0.29);font-weight:600'>5</td></tr><tr><td class='text-start fw-semibold'>Marketing Email Open</td><td style='background:rgba(46,204,113,0.30);font-weight:600'>4</td><td style='background:rgba(46,204,113,0.23);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.35);font-weight:600'>6</td><td style='background:rgba(46,204,113,0.28);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.28);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.41);font-weight:600'>8</td><td style='background:rgba(46,204,113,0.43);font-weight:600'>9</td><td style='background:rgba(46,204,113,0.25);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.30);font-weight:600'>4</td><td style='background:rgba(46,204,113,0.30);font-weight:600'>4</td><td style='background:rgba(46,204,113,0.35);font-weight:600'>6</td><td style='background:rgba(46,204,113,0.33);font-weight:600'>5</td><td style='background:rgba(46,204,113,0.82);font-weight:600'>24</td><td style='background:rgba(46,204,113,0.95);font-weight:600'>29</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>31</td><td style='background:rgba(46,204,113,0.85);font-weight:600'>25</td><td style='background:rgba(46,204,113,0.74);font-weight:600'>21</td><td style='background:rgba(46,204,113,0.38);font-weight:600'>7</td></tr><tr><td class='text-start fw-semibold'>Marketing Email Click</td><td style='background:rgba(46,204,113,0.33);font-weight:600'>4</td><td style='background:rgba(46,204,113,0.23);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.30);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.30);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.30);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.43);font-weight:600'>7</td><td style='background:rgba(46,204,113,0.43);font-weight:600'>7</td><td style='background:rgba(46,204,113,0.27);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.33);font-weight:600'>4</td><td style='background:rgba(46,204,113,0.30);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.37);font-weight:600'>5</td><td style='background:rgba(46,204,113,0.33);font-weight:600'>4</td><td style='background:rgba(46,204,113,0.90);font-weight:600'>21</td><td style='background:rgba(46,204,113,0.87);font-weight:600'>20</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>24</td><td style='background:rgba(46,204,113,0.73);font-weight:600'>16</td><td style='background:rgba(46,204,113,0.73);font-weight:600'>16</td><td style='background:rgba(46,204,113,0.43);font-weight:600'>7</td></tr><tr><td class='text-start fw-semibold'>Sales Sequence</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.25);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.25);font-weight:600'>2</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.30);font-weight:600'>4</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.23);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.30);font-weight:600'>4</td><td style='background:rgba(46,204,113,0.25);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.25);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.33);font-weight:600'>5</td><td style='background:rgba(46,204,113,0.46);font-weight:600'>10</td><td style='background:rgba(46,204,113,0.51);font-weight:600'>12</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>31</td><td style='background:rgba(46,204,113,0.79);font-weight:600'>23</td><td style='background:rgba(46,204,113,0.77);font-weight:600'>22</td><td style='background:rgba(46,204,113,0.28);font-weight:600'>3</td></tr><tr><td class='text-start fw-semibold'>Demo Booked</td><td style='background:rgba(46,204,113,0.26);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.26);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.26);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.32);font-weight:600'>2</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.32);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.38);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.32);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.45);font-weight:600'>4</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.57);font-weight:600'>6</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>13</td><td style='background:rgba(46,204,113,0.38);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.38);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.38);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.32);font-weight:600'>2</td></tr><tr><td class='text-start fw-semibold'>Paid Search (Google Ads)</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>2</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>2</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>4</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.80);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.80);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>2</td></tr><tr><td class='text-start fw-semibold'>Organic Search (SEO)</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.80);font-weight:600'>3</td><td style='background:rgba(46,204,113,0.80);font-weight:600'>3</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>4</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='color:#aaa'>0</td></tr><tr><td class='text-start fw-semibold'>BDR Email</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.27);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.27);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.27);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.27);font-weight:600'>1</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>12</td><td style='background:rgba(46,204,113,0.27);font-weight:600'>1</td></tr><tr><td class='text-start fw-semibold'>Webinar Registered</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>4</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.80);font-weight:600'>3</td><td style='color:#aaa'>0</td></tr><tr><td class='text-start fw-semibold'>BDR Call</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>2</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='background:rgba(46,204,113,0.40);font-weight:600'>1</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>4</td><td style='color:#aaa'>0</td></tr><tr><td class='text-start fw-semibold'>Outbound (BDR/AE)</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.52);font-weight:600'>2</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.36);font-weight:600'>1</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>5</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td></tr><tr><td class='text-start fw-semibold'>Partner Referral</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>1</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>2</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>2</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td></tr><tr><td class='text-start fw-semibold'>Paid Social (Meta)</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>1</td><td style='color:#aaa'>0</td><td style='background:rgba(46,204,113,0.60);font-weight:600'>1</td><td style='background:rgba(46,204,113,1.00);font-weight:600'>2</td><td style='color:#aaa'>0</td></tr></tbody></table>
+  </div>
+
+  <!-- Per-channel monthly charts -->
+  <div class="section-title">Channel Deep Dives — Monthly CW / CL / Open</div>
+  <div class="row g-0">
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Paid Search (Google Ads)</strong>
+              <span class="badge bg-success ms-2">25 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_paid_search_click" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [1, 2, 2, 0, 1, 2, 2, 0, 0, 1, 4, 1, 0, 0, 3, 1, 3, 2], "cl": [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0], "op": [0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 1, 1, 3, 8, 3]};
+          new Chart(document.getElementById('chart_paid_search_click'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Paid Social (Meta)</strong>
+              <span class="badge bg-success ms-2">4 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_paid_social_click" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0], "cl": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0], "op": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 3, 6, 2]};
+          new Chart(document.getElementById('chart_paid_social_click'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Organic Search (SEO)</strong>
+              <span class="badge bg-success ms-2">19 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_organic_search" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [0, 1, 1, 0, 0, 1, 2, 3, 3, 0, 1, 0, 1, 0, 1, 4, 1, 0], "cl": [1, 0, 0, 0, 1, 1, 1, 0, 0, 2, 2, 0, 2, 1, 1, 0, 1, 0], "op": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 1]};
+          new Chart(document.getElementById('chart_organic_search'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Content / Form Fill</strong>
+              <span class="badge bg-success ms-2">339 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_content_conversion" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [9, 19, 12, 8, 8, 12, 10, 14, 11, 9, 25, 19, 38, 45, 37, 30, 28, 5], "cl": [2, 4, 0, 1, 1, 3, 4, 1, 2, 3, 9, 5, 6, 11, 10, 1, 5, 0], "op": [0, 1, 1, 0, 5, 1, 2, 0, 1, 1, 9, 8, 22, 25, 16, 26, 37, 22]};
+          new Chart(document.getElementById('chart_content_conversion'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Webinar Registered</strong>
+              <span class="badge bg-success ms-2">13 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_webinar_registration" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 4, 1, 2, 2, 3, 0], "cl": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "op": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 6, 2]};
+          new Chart(document.getElementById('chart_webinar_registration'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Webinar Attended</strong>
+              <span class="badge bg-success ms-2">0 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_webinar_attended" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "cl": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "op": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0]};
+          new Chart(document.getElementById('chart_webinar_attended'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Marketing Email Open</strong>
+              <span class="badge bg-success ms-2">192 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_marketing_email_open" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [4, 1, 6, 3, 3, 8, 9, 2, 4, 4, 6, 5, 24, 29, 31, 25, 21, 7], "cl": [1, 0, 0, 0, 0, 3, 1, 0, 0, 1, 0, 2, 2, 5, 5, 3, 1, 0], "op": [1, 1, 0, 2, 0, 1, 2, 0, 1, 0, 2, 1, 10, 10, 15, 14, 18, 17]};
+          new Chart(document.getElementById('chart_marketing_email_open'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Marketing Email Click</strong>
+              <span class="badge bg-success ms-2">150 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_marketing_email_click" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [4, 1, 3, 3, 3, 7, 7, 2, 4, 3, 5, 4, 21, 20, 24, 16, 16, 7], "cl": [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 2, 2, 4, 2, 3, 1, 0], "op": [1, 0, 0, 2, 0, 0, 1, 0, 0, 0, 2, 1, 8, 10, 11, 13, 8, 13]};
+          new Chart(document.getElementById('chart_marketing_email_click'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Sales Sequence</strong>
+              <span class="badge bg-success ms-2">123 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_sequence_enrolled" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [0, 2, 2, 0, 4, 0, 1, 0, 4, 2, 2, 5, 10, 12, 31, 23, 22, 3], "cl": [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 2, 3, 4, 1, 3, 0, 1], "op": [0, 0, 2, 0, 0, 1, 0, 0, 2, 1, 0, 6, 7, 6, 14, 18, 22, 22]};
+          new Chart(document.getElementById('chart_sequence_enrolled'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Demo Booked</strong>
+              <span class="badge bg-success ms-2">46 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_demo_booked" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [1, 1, 1, 2, 0, 2, 3, 2, 4, 0, 0, 0, 6, 13, 3, 3, 3, 2], "cl": [0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0], "op": [0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 5, 2, 5, 0, 4, 3]};
+          new Chart(document.getElementById('chart_demo_booked'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>BDR Email</strong>
+              <span class="badge bg-success ms-2">17 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_bdr_email" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 12, 1], "cl": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 1], "op": [0, 2, 3, 0, 0, 1, 1, 1, 2, 1, 1, 0, 1, 1, 0, 5, 8, 10]};
+          new Chart(document.getElementById('chart_bdr_email'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>BDR Call</strong>
+              <span class="badge bg-success ms-2">12 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_bdr_call" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 2, 2, 1, 1, 4, 0], "cl": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0], "op": [1, 2, 2, 0, 0, 0, 3, 1, 2, 0, 1, 0, 0, 1, 0, 0, 3, 5]};
+          new Chart(document.getElementById('chart_bdr_call'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Partner Referral</strong>
+              <span class="badge bg-success ms-2">6 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_partner_referral" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 0, 1, 0, 0], "cl": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], "op": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0]};
+          new Chart(document.getElementById('chart_partner_referral'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script>
+        <div class="col-md-6 col-xl-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header bg-dark text-white">
+              <strong>Outbound (BDR/AE)</strong>
+              <span class="badge bg-success ms-2">8 CW</span>
+            </div>
+            <div class="card-body p-2">
+              <canvas id="chart_outbound_sourced" height="160"></canvas>
+            </div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var d = {"labels": ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"], "cw": [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 5, 0, 0, 0, 0, 0], "cl": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], "op": [1, 0, 0, 0, 0, 0, 0, 1, 2, 1, 1, 3, 5, 0, 0, 1, 0, 0]};
+          new Chart(document.getElementById('chart_outbound_sourced'), {
+            type: 'bar',
+            data: {
+              labels: d.labels,
+              datasets: [
+                { label: 'CW', data: d.cw, backgroundColor: '#2ecc71' },
+                { label: 'CL', data: d.cl, backgroundColor: '#e74c3c' },
+                { label: 'Open', data: d.op, backgroundColor: '#3498db' },
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+              scales: {
+                x: { stacked: true, ticks: { font: { size: 9 } } },
+                y: { stacked: true, ticks: { font: { size: 9 } } }
+              }
+            }
+          });
+        })();
+        </script></div>
+
+  <p class="text-muted mt-4" style="font-size:.75rem">
+    Data source: HubSpot CRM local export. Touch analysis covers all recorded activity up to deal createdate.
+    "Unknown" acquisition = contact imported offline (no UTM/web tracking). SKED pipeline ID: 809044788.
+  </p>
+
+</div>
+
+<script>
+// Net New vs Existing + Open Pipeline — deal count (line)
+(function() {
+  var nnData  = [51, 49, 43, 59, 54, 68, 54, 42, 44, 33, 56, 26, 46, 34, 39, 31, 25, 7];
+  var exData  = [0, 0, 0, 0, 3, 6, 1, 2, 1, 7, 4, 16, 50, 51, 64, 36, 29, 9];
+  var opNnData = [14, 10, 14, 10, 16, 13, 18, 15, 20, 12, 11, 15, 26, 21, 10, 35, 73, 47];
+  var opExData = [0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 3, 2, 15, 15, 25, 25, 12, 19];
+  var totCw   = nnData.map(function(v,i){ return v + exData[i]; });
+  var totOp   = opNnData.map(function(v,i){ return v + opExData[i]; });
+  new Chart(document.getElementById('nnCountChart'), {
+    type: 'line',
+    data: {
+      labels: ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"],
+      datasets: [
+        {
+          label: 'Total Closed Won',
+          data: totCw,
+          borderColor: '#2ecc71',
+          backgroundColor: 'rgba(46,204,113,0.06)',
+          borderWidth: 3,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          tension: 0.35,
+          fill: false,
+        },
+        {
+          label: 'Net New (Won)',
+          data: nnData,
+          borderColor: '#3498db',
+          backgroundColor: 'rgba(52,152,219,0.10)',
+          borderWidth: 2.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          tension: 0.35,
+          fill: true,
+        },
+        {
+          label: 'Existing Business (Won)',
+          data: exData,
+          borderColor: '#e67e22',
+          backgroundColor: 'rgba(230,126,34,0.10)',
+          borderWidth: 2.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          tension: 0.35,
+          fill: true,
+        },
+        {
+          label: 'Open Pipeline (Net New)',
+          data: opNnData,
+          borderColor: '#9b59b6',
+          backgroundColor: 'rgba(155,89,182,0.07)',
+          borderWidth: 2,
+          borderDash: [6, 3],
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          tension: 0.35,
+          fill: false,
+        },
+        {
+          label: 'Open Pipeline (Existing)',
+          data: opExData,
+          borderColor: '#c0392b',
+          backgroundColor: 'rgba(192,57,43,0.07)',
+          borderWidth: 2,
+          borderDash: [6, 3],
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          tension: 0.35,
+          fill: false,
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14 } },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+          callbacks: {
+            footer: function(ctx) {
+              var nn = nnData[ctx[0].dataIndex], ex = exData[ctx[0].dataIndex];
+              var opn = opNnData[ctx[0].dataIndex], ope = opExData[ctx[0].dataIndex];
+              return 'CW Total: ' + (nn+ex) + '  |  Open Total: ' + (opn+ope);
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { color: 'rgba(0,0,0,.06)' }, ticks: { font: { size: 12 } } },
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: 'Deals', font: { size: 13 } },
+          ticks: { font: { size: 12 }, stepSize: 5 },
+          grid: { color: 'rgba(0,0,0,.06)' }
+        }
+      }
+    }
+  });
+})();
+
+// Net New vs Existing + Open Pipeline — ARR (line)
+(function() {
+  var nnArr   = [206016.0, 210600.0, 174206.0, 236446.0, 219960.0, 288324.0, 234336.0, 182508.0, 173880.0, 140220.0, 222084.0, 95892.0, 165696.0, 128208.0, 118992.0, 129288.0, 120841.0, 28801.0];
+  var exArr   = [0.0, 0.0, 0.0, 0.0, 5688.0, 16644.0, 1056.0, 6228.0, 3576.0, 20184.0, 13596.0, 44628.0, 148176.0, 133908.0, 186804.0, 111577.0, 101953.0, 29441.0];
+  var opNnArr = [23820.0, 23952.0, 30960.0, 28584.0, 16812.0, 29892.0, 37416.0, 29772.0, 47652.0, 22740.0, 25008.0, 44916.0, 43104.0, 27120.0, 34404.0, 89052.0, 227709.0, 69760.0];
+  var opExArr = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2988.0, 0.0, 0.0, 3708.0, 12648.0, 1056.0, 20952.0, 18432.0, 27432.0, 34896.0, 20127.0, 60427.0];
+  var totCwArr = nnArr.map(function(v,i){ return v + exArr[i]; });
+  var totOpArr = opNnArr.map(function(v,i){ return v + opExArr[i]; });
+  new Chart(document.getElementById('nnArrChart'), {
+    type: 'line',
+    data: {
+      labels: ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"],
+      datasets: [
+        {
+          label: 'Total CW ARR',
+          data: totCwArr,
+          borderColor: '#2ecc71',
+          backgroundColor: 'rgba(46,204,113,0.06)',
+          borderWidth: 3,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          tension: 0.35,
+          fill: false,
+        },
+        {
+          label: 'Net New ARR (Won)',
+          data: nnArr,
+          borderColor: '#3498db',
+          backgroundColor: 'rgba(52,152,219,0.10)',
+          borderWidth: 2.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          tension: 0.35,
+          fill: true,
+        },
+        {
+          label: 'Existing Business ARR (Won)',
+          data: exArr,
+          borderColor: '#e67e22',
+          backgroundColor: 'rgba(230,126,34,0.10)',
+          borderWidth: 2.5,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          tension: 0.35,
+          fill: true,
+        },
+        {
+          label: 'Open Pipeline ARR (Net New)',
+          data: opNnArr,
+          borderColor: '#9b59b6',
+          backgroundColor: 'rgba(155,89,182,0.07)',
+          borderWidth: 2,
+          borderDash: [6, 3],
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          tension: 0.35,
+          fill: false,
+        },
+        {
+          label: 'Open Pipeline ARR (Existing)',
+          data: opExArr,
+          borderColor: '#c0392b',
+          backgroundColor: 'rgba(192,57,43,0.07)',
+          borderWidth: 2,
+          borderDash: [6, 3],
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          tension: 0.35,
+          fill: false,
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14 } },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+          callbacks: {
+            label: function(ctx) {
+              return ctx.dataset.label + ': $' + ctx.parsed.y.toLocaleString();
+            },
+            footer: function(ctx) {
+              var cw = nnArr[ctx[0].dataIndex] + exArr[ctx[0].dataIndex];
+              var op = opNnArr[ctx[0].dataIndex] + opExArr[ctx[0].dataIndex];
+              return 'CW ARR: $' + cw.toLocaleString() + '  |  Open ARR: $' + op.toLocaleString();
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { color: 'rgba(0,0,0,.06)' }, ticks: { font: { size: 12 } } },
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: 'ARR ($)', font: { size: 13 } },
+          ticks: {
+            font: { size: 12 },
+            callback: function(v) { return '$' + (v >= 1000 ? (v/1000).toFixed(0) + 'k' : v); }
+          },
+          grid: { color: 'rgba(0,0,0,.06)' }
+        }
+      }
+    }
+  });
+})();
+
+// Meta Paid Social chart
+new Chart(document.getElementById('metaChart'), {
+  type: 'bar',
+  data: {
+    labels: ["2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"],
+    datasets: [
+      { label: 'Closed Won', data: [1, 5, 4, 4, 3, 1], backgroundColor: '#2ecc71' },
+      { label: 'Closed Lost', data: [1, 0, 2, 1, 2, 0], backgroundColor: '#e74c3c' },
+      { label: 'Open Pipeline', data: [3, 0, 0, 6, 6, 1], backgroundColor: '#3498db' },
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'top' },
+      title: { display: true, text: 'Deals with a Meta Paid Social Touch — by Outcome' },
+      tooltip: {
+        mode: 'index',
+        intersect: false,
+        callbacks: {
+          afterBody: function(ctx) {
+            var idx = ctx[0].dataIndex;
+            var total = [96, 85, 103, 67, 54, 16][idx];
+            var metaCw = [1, 5, 4, 4, 3, 1][idx];
+            var pct = total > 0 ? (metaCw / total * 100).toFixed(1) : 0;
+            return 'Meta CW as % of all CW: ' + pct + '%';
+          }
+        }
+      }
+    },
+    scales: {
+      x: { stacked: true },
+      y: { stacked: true, title: { display: true, text: 'Deals with Meta Touch' } }
+    }
+  }
+});
+
+// Monthly stacked bar
+new Chart(document.getElementById('monthlyBar'), {
+  type: 'bar',
+  data: {
+    labels: ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"],
+    datasets: [
+      { label: 'Closed Won', data: [51, 49, 43, 59, 57, 74, 55, 44, 45, 40, 60, 42, 96, 85, 103, 67, 54, 16], backgroundColor: '#2ecc71' },
+      { label: 'Closed Lost', data: [24, 23, 11, 33, 27, 39, 40, 31, 25, 26, 42, 26, 32, 31, 31, 23, 15, 1], backgroundColor: '#e74c3c' },
+      { label: 'Open Pipeline', data: [14, 10, 14, 10, 16, 13, 19, 15, 20, 14, 14, 17, 41, 36, 35, 60, 85, 66], backgroundColor: '#3498db' },
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'top' },
+      tooltip: {
+        callbacks: {
+          afterBody: function(ctx) {
+            var idx = ctx[0].dataIndex;
+            return 'CW Rate: [68.0, 68.1, 79.6, 64.1, 67.9, 65.5, 57.9, 58.7, 64.3, 60.6, 58.8, 61.8, 75.0, 73.3, 76.9, 74.4, 78.3, 94.1][' + idx + ']%'.replace('[68.0, 68.1, 79.6, 64.1, 67.9, 65.5, 57.9, 58.7, 64.3, 60.6, 58.8, 61.8, 75.0, 73.3, 76.9, 74.4, 78.3, 94.1][' + idx + ']', [68.0, 68.1, 79.6, 64.1, 67.9, 65.5, 57.9, 58.7, 64.3, 60.6, 58.8, 61.8, 75.0, 73.3, 76.9, 74.4, 78.3, 94.1][idx]);
+          }
+        }
+      }
+    },
+    scales: {
+      x: { stacked: true },
+      y: { stacked: true }
+    }
+  }
+});
+
+// MQL type chart
+new Chart(document.getElementById('mqlChart'), {
+  type: 'bar',
+  data: {
+    labels: ["nan", "Demo Request", "Partner Referral", "BDR Sourced", "Webinar", "AE Sourced", "Offer", "Content Opt In", "CS Referral", "Content Download", "Event"],
+    datasets: [{ label: 'Closed Won', data: [540, 338, 49, 38, 30, 19, 10, 9, 3, 2, 2], backgroundColor: '#8e44ad' }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: 'Closed Won by MQL Type' } },
+    scales: { x: { beginAtZero: true } }
+  }
+});
+
+// Acquisition channel chart
+new Chart(document.getElementById('acqChart'), {
+  type: 'bar',
+  data: {
+    labels: ["Recent Marketing Channel", "unknown", "Website Visit", "Direct Visit", "Paid Search (Google Ads)", "Organic Search (SEO)", "Outbound (BDR/AE)", "Partner Referral", "Paid Social (Meta)", "Email Marketing (1st touch)", "Referral Visit"],
+    datasets: [
+      { label: 'CW', data: [402, 353, 172, 52, 23, 19, 8, 6, 3, 2, 0], backgroundColor: '#2ecc71' },
+      { label: 'CL', data: [362, 60, 23, 12, 4, 13, 1, 1, 4, 0, 0], backgroundColor: '#e74c3c' },
+      { label: 'Open', data: [187, 170, 65, 21, 18, 8, 15, 2, 11, 1, 1], backgroundColor: '#3498db' },
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10 } }, title: { display: true, text: 'First Acquisition Channel' } },
+    scales: { x: { stacked: true }, y: { stacked: true } }
+  }
+});
+</script>
+</body>
+</html>
