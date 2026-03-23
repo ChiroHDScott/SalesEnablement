@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Marketing Report — Q1 Week 11</title>
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            font-size: 14px
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px
+        }
+
+        .report-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            padding: 40px 32px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .report-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%
+        }
+
+        .report-header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #fff
+        }
+
+        .report-header .subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.55)
+        }
+
+        .header-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .kpi-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px
+        }
+
+        .kpi-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border-left: 4px solid #0f3460
+        }
+
+        .kpi-card.green { border-left-color: #2e7d32 }
+        .kpi-card.amber { border-left-color: #f57c00 }
+        .kpi-card.red   { border-left-color: #c62828 }
+
+        .kpi-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.1
+        }
+
+        .kpi-label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px
+        }
+
+        .kpi-detail {
+            font-size: 12px;
+            color: #666;
+            margin-top: 6px
+        }
+
+        .kpi-detail .positive { color: #2e7d32; font-weight: 600 }
+        .kpi-detail .caution  { color: #f57c00; font-weight: 600 }
+
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.2s
+        }
+
+        .section:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.12) }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s
+        }
+
+        .section-header:hover { background: #fafbfc }
+
+        .section-header h2 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin: 0;
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .section-header h2 .icon {
+            font-size: 20px;
+            width: 28px;
+            text-align: center
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px
+        }
+
+        .badge-green { background: #e8f5e9; color: #2e7d32 }
+        .badge-amber { background: #fff3e0; color: #e65100 }
+        .badge-red   { background: #fce4ec; color: #c62828 }
+        .badge-blue  { background: #e3f2fd; color: #1565c0 }
+        .badge-gray  { background: #f5f5f5; color: #666 }
+
+        .chevron {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.25s ease;
+            color: #999;
+            flex-shrink: 0;
+            margin-left: 12px
+        }
+
+        .section.open .chevron { transform: rotate(180deg) }
+
+        .section-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 24px
+        }
+
+        .section.open .section-body {
+            max-height: 5000px;
+            padding: 0 24px 24px
+        }
+
+        .section-body::before {
+            content: '';
+            display: block;
+            height: 1px;
+            background: #eee;
+            margin-bottom: 20px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-bottom: 16px
+        }
+
+        th {
+            background: #16213e;
+            color: #fff;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px
+        }
+
+        th:first-child { border-radius: 6px 0 0 0 }
+        th:last-child  { border-radius: 0 6px 0 0 }
+
+        td {
+            padding: 9px 14px;
+            border-bottom: 1px solid #f0f0f0
+        }
+
+        tr:last-child td { border-bottom: none }
+        tr:hover td { background: #fafbfc }
+
+        .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 12px
+        }
+
+        .row-total td {
+            font-weight: 700;
+            background: #f8f9fa;
+            border-top: 2px solid #16213e
+        }
+
+        .row-subtotal td {
+            font-weight: 600;
+            background: #fafbfc;
+            border-top: 1px solid #ddd
+        }
+
+        .attainment-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .att-bar-bg {
+            width: 60px;
+            height: 6px;
+            background: #eee;
+            border-radius: 3px;
+            overflow: hidden;
+            flex-shrink: 0
+        }
+
+        .att-bar {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.6s ease
+        }
+
+        .att-green { background: #2e7d32 }
+        .att-amber { background: #f57c00 }
+        .att-red   { background: #c62828 }
+
+        .status-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap
+        }
+
+        .tag-green       { background: #e8f5e9; color: #2e7d32 }
+        .tag-yellow      { background: #fff8e1; color: #f57f17 }
+        .tag-done        { background: #f5f5f5; color: #999 }
+        .tag-not-started { background: #fafafa; color: #bbb }
+
+        .callout {
+            background: #f8f9fa;
+            border-left: 3px solid #0f3460;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+            font-size: 13px
+        }
+
+        .callout.warning {
+            border-left-color: #f57c00;
+            background: #fef8f0
+        }
+
+        .callout-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            margin-bottom: 4px
+        }
+
+        ul.clean {
+            list-style: none;
+            padding: 0
+        }
+
+        ul.clean li {
+            padding: 6px 0;
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 13px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px
+        }
+
+        ul.clean li:last-child { border-bottom: none }
+
+        ul.clean li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background: #0f3460;
+            border-radius: 50%;
+            margin-top: 7px;
+            flex-shrink: 0
+        }
+
+        ul.sub {
+            list-style: none;
+            padding: 0 0 0 16px;
+            margin-top: 4px
+        }
+
+        ul.sub li {
+            padding: 3px 0;
+            font-size: 12px;
+            color: #555;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px
+        }
+
+        ul.sub li::before {
+            content: '–';
+            color: #aaa;
+            flex-shrink: 0
+        }
+
+        .methodology {
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #eee
+        }
+
+        .controls {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 12px;
+            gap: 8px
+        }
+
+        .btn-sm {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.15s
+        }
+
+        .btn-sm:hover {
+            background: #f5f5f5;
+            border-color: #ccc;
+            color: #333
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 12px }
+            .report-header { padding: 24px 20px }
+            .report-header h1 { font-size: 24px }
+            .kpi-strip { grid-template-columns: 1fr 1fr }
+            .header-meta { flex-direction: column; gap: 4px }
+            table { font-size: 12px }
+            td, th { padding: 6px 8px }
+            .section-header { padding: 14px 16px }
+            .section.open .section-body { padding: 0 16px 16px }
+        }
+
+        @media (max-width: 480px) {
+            .kpi-strip { grid-template-columns: 1fr }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Header -->
+        <div class="report-header">
+            <h1>Weekly Marketing Report</h1>
+            <div class="subtitle">Q1 2025 — Week 11 of 13</div>
+            <div class="header-meta">
+                <span>89% through working days</span>
+                <span>|</span>
+                <span>Deals cohorted by Q1 origination</span>
+            </div>
+        </div>
+
+        <!-- Top-line KPIs -->
+        <div class="kpi-strip">
+            <div class="kpi-card amber">
+                <div class="kpi-value">264</div>
+                <div class="kpi-label">SQOs (Demos Held)</div>
+                <div class="kpi-detail"><span class="caution">78%</span> of goal (339 pace target)</div>
+            </div>
+            <div class="kpi-card green">
+                <div class="kpi-value">362</div>
+                <div class="kpi-label">SALs (Demos Scheduled)</div>
+                <div class="kpi-detail"><span class="positive">89%</span> of goal (409 pace target)</div>
+            </div>
+            <div class="kpi-card green">
+                <div class="kpi-value">$605.5K</div>
+                <div class="kpi-label">Won ARR</div>
+                <div class="kpi-detail">156 deals closed</div>
+            </div>
+            <div class="kpi-card green">
+                <div class="kpi-value">$1.28M</div>
+                <div class="kpi-label">Total Pipeline</div>
+                <div class="kpi-detail">423 total deals · $502.9K still open</div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn-sm" onclick="toggleAll(true)">Expand All</button>
+            <button class="btn-sm" onclick="toggleAll(false)">Collapse All</button>
+        </div>
+
+        <!-- Section 1: Q1 Pipeline Scorecard -->
+        <div class="section open" id="sec-pipeline">
+            <div class="section-header" onclick="toggle(this)">
+                <h2><span class="icon">📊</span> Q1 Pipeline Scorecard</h2>
+                <div style="display:flex;align-items:center">
+                    <span class="section-badge badge-amber">78% SQO Attainment</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-body">
+                <div class="callout warning">
+                    <div class="callout-label">Important Note</div>
+                    Several Non-Demo MQLs were reclassified to Partnership this past week. This directly impacts category-level attainment — Non-Demo SQL dropped while Partnership exceeded pace.
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th class="num">SQO Goal</th>
+                            <th class="num">Pace Target</th>
+                            <th class="num">Actual SQOs</th>
+                            <th>SQO Attainment</th>
+                            <th class="num">SAL Goal</th>
+                            <th class="num">Pace Target</th>
+                            <th class="num">Actual SALs</th>
+                            <th>SAL Attainment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Demo Request</strong></td>
+                            <td class="num">270</td>
+                            <td class="num">240</td>
+                            <td class="num">186</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-amber" style="width:78%"></div></div>
+                                    <span style="font-weight:600;color:#f57c00">78%</span>
+                                </div>
+                            </td>
+                            <td class="num">300</td>
+                            <td class="num">267</td>
+                            <td class="num">270</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-green" style="width:100%"></div></div>
+                                    <span style="font-weight:600;color:#2e7d32">101%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Non-Demo SQL</strong></td>
+                            <td class="num">66</td>
+                            <td class="num">59</td>
+                            <td class="num">29</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-red" style="width:49%"></div></div>
+                                    <span style="font-weight:600;color:#c62828">49%</span>
+                                </div>
+                            </td>
+                            <td class="num">99</td>
+                            <td class="num">88</td>
+                            <td class="num">37</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-red" style="width:42%"></div></div>
+                                    <span style="font-weight:600;color:#c62828">42%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Partnership</strong></td>
+                            <td class="num">45</td>
+                            <td class="num">40</td>
+                            <td class="num">49</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-green" style="width:100%"></div></div>
+                                    <span style="font-weight:600;color:#2e7d32">123%</span>
+                                </div>
+                            </td>
+                            <td class="num">60</td>
+                            <td class="num">54</td>
+                            <td class="num">55</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-green" style="width:100%"></div></div>
+                                    <span style="font-weight:600;color:#2e7d32">102%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="row-total">
+                            <td>TOTAL</td>
+                            <td class="num">381</td>
+                            <td class="num">339</td>
+                            <td class="num">264</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-amber" style="width:78%"></div></div>
+                                    <span style="font-weight:600;color:#f57c00">78%</span>
+                                </div>
+                            </td>
+                            <td class="num">459</td>
+                            <td class="num">409</td>
+                            <td class="num">362</td>
+                            <td>
+                                <div class="attainment-cell">
+                                    <div class="att-bar-bg"><div class="att-bar att-green" style="width:89%"></div></div>
+                                    <span style="font-weight:600;color:#2e7d32">89%</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="methodology"><strong>Methodology:</strong> Marketing numbers are cohorted by the quarter the Deal (SAL) was created. All Deals in the table above originated in Q1. SALs need time and demos to convert into SQOs, so expect some lag in SQO attainment.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Noteworthy for the Week -->
+        <div class="section" id="sec-noteworthy">
+            <div class="section-header" onclick="toggle(this)">
+                <h2><span class="icon">⚡</span> Noteworthy for the Week</h2>
+                <div style="display:flex;align-items:center">
+                    <span class="section-badge badge-blue">4 Updates</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-body">
+                <ul class="clean">
+                    <li>
+                        <div>
+                            <strong>City Benchmarks Blueprint campaign kicked off in Instantly.ai</strong>
+                            <ul class="sub">
+                                <li>1.2k city-specific emails sent so far with a 33% open rate</li>
+                                <li>No meaningful replies yet — future campaigns should add click/download intent</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>Alina Launch</strong> — Preview video and webpage built to drive early beta customer sign-ups: <a href="https://content.sked.life/alina-preview.html" target="_blank" style="color:#0f3460">content.sked.life/alina-preview.html</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>"The Modern Marketing Playbook for Chiropractic" Webinar — this Wednesday</strong>
+                            <ul class="sub">
+                                <li>59 currently registered — interview with Mateo Franco</li>
+                                <li>33 Tier 1 + 16 existing customers = 83% of the list is high quality</li>
+                                <li>The 27 Tier 1 leads who aren't yet customers are the priority to push to sales ASAP — especially the 8+ already at SQL/MQL stage</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>SKED Content Resource Center — build started</strong>: <a href="https://content.sked.life/resources.html" target="_blank" style="color:#0f3460">content.sked.life/resources.html</a>
+                            <ul class="sub">
+                                <li>Still adding content and search functionality</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 3: Workstream Tracker -->
+        <div class="section" id="sec-workstreams">
+            <div class="section-header" onclick="toggle(this)">
+                <h2><span class="icon">🔄</span> Workstream Tracker</h2>
+                <div style="display:flex;align-items:center">
+                    <span class="section-badge badge-gray">14 Workstreams</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:5%">Priority</th>
+                            <th style="width:28%">Workstream</th>
+                            <th style="width:12%">Status</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="color:#bbb;font-size:12px">—</td>
+                            <td><strong>State of Industry</strong></td>
+                            <td><span class="status-tag tag-done">Done</span></td>
+                            <td>Complete.</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#bbb;font-size:12px">—</td>
+                            <td><strong>Parker Conference</strong></td>
+                            <td><span class="status-tag tag-done">Done</span></td>
+                            <td>Complete.</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;color:#0f3460">1</td>
+                            <td><strong>Marketing → BDR Lead Pass</strong></td>
+                            <td><span class="status-tag tag-yellow">Yellow</span></td>
+                            <td>Only 49% of quarter-to-date target. 15 deals reclassified from Non-Demo MQL to Partnership this past week. Seeking: marketing-dedicated BDR and sequence dashboard (speed-to-lead, steps, call recordings). Lead scoring model drafted this week based on real-world modeling.</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;color:#0f3460">2</td>
+                            <td><strong>AI: Content Resource Center &amp; Interactive Content</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>Project underway to power AEO/SEO &amp; higher content engagement.</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;color:#0f3460">3</td>
+                            <td><strong>Partnerships</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>Met with TRP last week to review all GTM pieces for the year. Working with Drake on timing of each initiative.</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;color:#0f3460">4</td>
+                            <td><strong>Alina Launch</strong></td>
+                            <td><span class="status-tag tag-yellow">Yellow</span></td>
+                            <td>Landing page and video live to support early beta customer recruitment: <a href="https://content.sked.life/alina-preview.html" target="_blank" style="color:#0f3460">alina-preview.html</a></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;color:#0f3460">5</td>
+                            <td><strong>Newsletter &amp; Case Study Initiatives</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>Jaz leading. Targeting April for first newsletter. Case study interview lined up with Dr. Amy Haas, Path of Life Chiropractic Health Center.</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;color:#0f3460">6</td>
+                            <td><strong>Blueprint BDR Campaigns</strong></td>
+                            <td><span class="status-tag tag-yellow">Yellow</span></td>
+                            <td>Full city benchmarks campaign launched — 1.2k emails, 33% open rate as air cover to BDR calling campaign.</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#bbb;font-size:12px">—</td>
+                            <td><strong>Digital Conference</strong></td>
+                            <td><span class="status-tag tag-yellow">Yellow</span></td>
+                            <td>Needs ELT discussion: should this become a branded event that turns into an in-person next year, or stay unbranded?</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#bbb;font-size:12px">—</td>
+                            <td><strong>Brand Redesign</strong></td>
+                            <td><span class="status-tag tag-yellow">Yellow</span></td>
+                            <td>Could really use Product Marketing to run this.</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#bbb;font-size:12px">—</td>
+                            <td><strong>AdWords Relaunch</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>New HubSpot dashboards live. SKED is mostly branded search — pulling back to test other keyword phrases. ChiroHD hitting strong non-branded terms.</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#bbb;font-size:12px">—</td>
+                            <td><strong>Bottoms-Up Funnel Model</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>Waiting to review latest version with GTM team.</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#bbb;font-size:12px">—</td>
+                            <td><strong>Landing Page Experience per Clinic</strong></td>
+                            <td><span class="status-tag tag-green">Green</span></td>
+                            <td>Plan is to try a Google Reviews campaign first. Page-per-clinic approach can also serve BDRs for clinic research internally.</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#bbb;font-size:12px">—</td>
+                            <td><strong>Platinum Campaign</strong></td>
+                            <td><span class="status-tag tag-not-started">Not Started</span></td>
+                            <td>Determine product requirements first (calling module, etc.).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 4: Channel Performance -->
+        <div class="section" id="sec-channel">
+            <div class="section-header" onclick="toggle(this)">
+                <h2><span class="icon">📈</span> Channel Performance</h2>
+                <div style="display:flex;align-items:center">
+                    <span class="section-badge badge-blue">$1.28M Pipeline</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-body">
+                <div style="overflow-x:auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Channel</th>
+                            <th>Deal Type</th>
+                            <th class="num">Demos</th>
+                            <th class="num">Won #</th>
+                            <th class="num">Won ARR</th>
+                            <th class="num">Lost #</th>
+                            <th class="num">Lost ARR</th>
+                            <th class="num">Open #</th>
+                            <th class="num">Open ARR</th>
+                            <th class="num">Total #</th>
+                            <th class="num">Total ARR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Inbound -->
+                        <tr>
+                            <td rowspan="3"><strong>Inbound</strong></td>
+                            <td>Net New</td>
+                            <td class="num">130</td>
+                            <td class="num">43</td>
+                            <td class="num">$179.8K</td>
+                            <td class="num">44</td>
+                            <td class="num">$101.8K</td>
+                            <td class="num">103</td>
+                            <td class="num">$237.2K</td>
+                            <td class="num">190</td>
+                            <td class="num">$518.8K</td>
+                        </tr>
+                        <tr>
+                            <td>Upsell / X-Sell</td>
+                            <td class="num">56</td>
+                            <td class="num">55</td>
+                            <td class="num">$187.6K</td>
+                            <td class="num">8</td>
+                            <td class="num">$2.3K</td>
+                            <td class="num">17</td>
+                            <td class="num">$44.2K</td>
+                            <td class="num">80</td>
+                            <td class="num">$234.1K</td>
+                        </tr>
+                        <tr class="row-subtotal">
+                            <td><em>Subtotal</em></td>
+                            <td class="num">186</td>
+                            <td class="num">98</td>
+                            <td class="num">$367.5K</td>
+                            <td class="num">52</td>
+                            <td class="num">$104.1K</td>
+                            <td class="num">120</td>
+                            <td class="num">$281.4K</td>
+                            <td class="num">270</td>
+                            <td class="num">$752.9K</td>
+                        </tr>
+
+                        <!-- Non-Demo MQL -->
+                        <tr>
+                            <td rowspan="3"><strong>Non-Demo MQL</strong></td>
+                            <td>Net New</td>
+                            <td class="num">15</td>
+                            <td class="num">2</td>
+                            <td class="num">$5.9K</td>
+                            <td class="num">10</td>
+                            <td class="num">$20.1K</td>
+                            <td class="num">9</td>
+                            <td class="num">$23.7K</td>
+                            <td class="num">21</td>
+                            <td class="num">$49.6K</td>
+                        </tr>
+                        <tr>
+                            <td>Upsell / X-Sell</td>
+                            <td class="num">14</td>
+                            <td class="num">6</td>
+                            <td class="num">$24.9K</td>
+                            <td class="num">7</td>
+                            <td class="num">$12.2K</td>
+                            <td class="num">3</td>
+                            <td class="num">$3.1K</td>
+                            <td class="num">16</td>
+                            <td class="num">$40.2K</td>
+                        </tr>
+                        <tr class="row-subtotal">
+                            <td><em>Subtotal</em></td>
+                            <td class="num">29</td>
+                            <td class="num">8</td>
+                            <td class="num">$30.7K</td>
+                            <td class="num">17</td>
+                            <td class="num">$32.3K</td>
+                            <td class="num">12</td>
+                            <td class="num">$26.8K</td>
+                            <td class="num">37</td>
+                            <td class="num">$89.8K</td>
+                        </tr>
+
+                        <!-- Self-Gen -->
+                        <tr>
+                            <td rowspan="3"><strong>Self-Gen</strong></td>
+                            <td>Net New</td>
+                            <td class="num">16</td>
+                            <td class="num">6</td>
+                            <td class="num">$31.6K</td>
+                            <td class="num">6</td>
+                            <td class="num">$3.6K</td>
+                            <td class="num">15</td>
+                            <td class="num">$32.0K</td>
+                            <td class="num">27</td>
+                            <td class="num">$67.2K</td>
+                        </tr>
+                        <tr>
+                            <td>Upsell / X-Sell</td>
+                            <td class="num">23</td>
+                            <td class="num">15</td>
+                            <td class="num">$40.8K</td>
+                            <td class="num">5</td>
+                            <td class="num">$3.0K</td>
+                            <td class="num">9</td>
+                            <td class="num">$29.6K</td>
+                            <td class="num">29</td>
+                            <td class="num">$73.4K</td>
+                        </tr>
+                        <tr class="row-subtotal">
+                            <td><em>Subtotal</em></td>
+                            <td class="num">39</td>
+                            <td class="num">21</td>
+                            <td class="num">$72.4K</td>
+                            <td class="num">11</td>
+                            <td class="num">$6.6K</td>
+                            <td class="num">24</td>
+                            <td class="num">$61.6K</td>
+                            <td class="num">56</td>
+                            <td class="num">$140.6K</td>
+                        </tr>
+
+                        <!-- Partner -->
+                        <tr>
+                            <td rowspan="3"><strong>Partner</strong></td>
+                            <td>Net New</td>
+                            <td class="num">32</td>
+                            <td class="num">18</td>
+                            <td class="num">$90.8K</td>
+                            <td class="num">5</td>
+                            <td class="num">$25.6K</td>
+                            <td class="num">12</td>
+                            <td class="num">$73.1K</td>
+                            <td class="num">35</td>
+                            <td class="num">$189.5K</td>
+                        </tr>
+                        <tr>
+                            <td>Upsell / X-Sell</td>
+                            <td class="num">17</td>
+                            <td class="num">11</td>
+                            <td class="num">$44.1K</td>
+                            <td class="num">0</td>
+                            <td class="num">$0.0K</td>
+                            <td class="num">9</td>
+                            <td class="num">$36.3K</td>
+                            <td class="num">20</td>
+                            <td class="num">$80.4K</td>
+                        </tr>
+                        <tr class="row-subtotal">
+                            <td><em>Subtotal</em></td>
+                            <td class="num">49</td>
+                            <td class="num">29</td>
+                            <td class="num">$134.9K</td>
+                            <td class="num">5</td>
+                            <td class="num">$25.6K</td>
+                            <td class="num">21</td>
+                            <td class="num">$109.4K</td>
+                            <td class="num">55</td>
+                            <td class="num">$269.9K</td>
+                        </tr>
+
+                        <!-- Unattributed -->
+                        <tr>
+                            <td rowspan="3" style="color:#999"><strong>Unattributed</strong></td>
+                            <td style="color:#999">Net New</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0.0K</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0.0K</td>
+                            <td class="num" style="color:#999">3</td>
+                            <td class="num" style="color:#999">$14.7K</td>
+                            <td class="num" style="color:#999">3</td>
+                            <td class="num" style="color:#999">$14.7K</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#999">Upsell / X-Sell</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0.0K</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0.0K</td>
+                            <td class="num" style="color:#999">2</td>
+                            <td class="num" style="color:#999">$9.0K</td>
+                            <td class="num" style="color:#999">2</td>
+                            <td class="num" style="color:#999">$9.0K</td>
+                        </tr>
+                        <tr class="row-subtotal">
+                            <td style="color:#999"><em>Subtotal</em></td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0.0K</td>
+                            <td class="num" style="color:#999">0</td>
+                            <td class="num" style="color:#999">$0.0K</td>
+                            <td class="num" style="color:#999">5</td>
+                            <td class="num" style="color:#999">$23.7K</td>
+                            <td class="num" style="color:#999">5</td>
+                            <td class="num" style="color:#999">$23.7K</td>
+                        </tr>
+
+                        <!-- Grand Total -->
+                        <tr class="row-total">
+                            <td colspan="2"><strong>GRAND TOTAL</strong></td>
+                            <td class="num">303</td>
+                            <td class="num">156</td>
+                            <td class="num">$605.5K</td>
+                            <td class="num">85</td>
+                            <td class="num">$168.6K</td>
+                            <td class="num">182</td>
+                            <td class="num">$502.9K</td>
+                            <td class="num">423</td>
+                            <td class="num">$1,277.0K</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggle(header) {
+            header.closest('.section').classList.toggle('open');
+        }
+
+        function toggleAll(open) {
+            document.querySelectorAll('.section').forEach(s => {
+                if (open) s.classList.add('open');
+                else s.classList.remove('open');
+            });
+        }
+    </script>
+</body>
+
+</html>
