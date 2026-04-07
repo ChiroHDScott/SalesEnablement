@@ -19,3 +19,9 @@ dist/
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Marketing data exports (large CSVs with PII)
+Marketing Exports/
+
+# Data import utility (reads from .env — run locally only)
+import_to_supabase.py
